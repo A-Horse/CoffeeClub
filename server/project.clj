@@ -49,7 +49,8 @@
   :ring {:handler coffee.handler/app
          :init    coffee.handler/init
          :destroy coffee.handler/destroy
-         :uberwar-name "coffee.war"}
+         :uberwar-name "coffee.war"
+         :open-browser? false}
   
   :ragtime
   {:migrations ragtime.sql.files/migrations

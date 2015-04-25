@@ -2,6 +2,8 @@
   (:require [compojure.core :refer [defroutes routes]]
             [coffee.routes.home :refer [home-routes]]
             [coffee.routes.services :refer [service-routes]]
+            [coffee.routes.article-services :refer [article-routes]]
+            [coffee.routes.user-services :refer [user-routes]]
             [coffee.middleware
              :refer [development-middleware production-middleware]]
             [coffee.session :as session]
@@ -70,6 +72,8 @@
   (-> (routes
         home-routes
         service-routes
+        user-routes
+        article-routes
         base-routes)
       development-middleware
       production-middleware))

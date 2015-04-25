@@ -10,7 +10,7 @@
             [noir-exception.core :refer [wrap-internal-error]]
             [ring.middleware.session.memory :refer [memory-store]]
             [ring.middleware.format :refer [wrap-restful-format]]
-            
+            [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
             ))
 
 (defn log-request [handler]
@@ -18,9 +18,19 @@
     (timbre/debug req)
     (handler req)))
 
+(defn wrap-csrf
+  "disables CSRF for URIs that match the specified pattern"
+  [handler pattern]
+  (let [anti-forgery-handler (wrap-anti-forgery handler)]
+    (fn [req]
+      (if (re-matches pattern (:uri req))
+        (handler req)
+        (anti-forgery-handler req)))))
+
 (defn development-middleware [handler]
   (if (env :dev)
     (-> handler
+        log-request
         wrap-error-page
         wrap-exceptions)
     handler))
@@ -30,8 +40,11 @@
       
       (wrap-restful-format :formats [:json-kw :edn :transit-json :transit-msgpack])
       (wrap-idle-session-timeout
-        {:timeout (* 60 30)
-         :timeout-response (redirect "/")})
+       {:timeout (* 60 30)
+        :timeout-response (redirect "/")})
+      (wrap-csrf #"^/user/.*")
       (wrap-defaults
-        (assoc-in site-defaults [:session :store] (memory-store session/mem)))
+       (->  site-defaults
+            (assoc-in [:security :anti-forgery] false)
+            (assoc-in [:session :store] (memory-store session/mem))))
       (wrap-internal-error :log #(timbre/error %))))
