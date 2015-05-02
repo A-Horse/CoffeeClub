@@ -1,1 +1,0 @@
-web: java $JVM_OPTS -cp target/coffee.jar clojure.main -m coffee.core
