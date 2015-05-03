@@ -1,0 +1,10 @@
+{
+  "dev": {
+    "host": "localhost",
+    "user": { "ENV" : "coffee" },
+    "password" : { "ENV" : "coffee" },
+    "database": "coffee",
+    "driver": "postgres",
+    "multipleStatements": true
+  }
+}
