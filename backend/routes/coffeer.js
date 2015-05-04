@@ -11,4 +11,12 @@ router.get('/', function(req, res, next){
 });
 
 
+/**************************************************
+ * Sign in
+ **************************************************/
+router.post('/', function(req, res, next){
+
+});
+
+
 module.exports = router;

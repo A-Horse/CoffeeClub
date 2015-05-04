@@ -1,10 +1,10 @@
 {
   "dev": {
+    "driver": "pg",
+    "user": "coffee",
+    "password": "coffee",
     "host": "localhost",
-    "user": { "ENV" : "coffee" },
-    "password" : { "ENV" : "coffee" },
     "database": "coffee",
-    "driver": "postgres",
-    "multipleStatements": true
+    "schema": "public"
   }
 }
