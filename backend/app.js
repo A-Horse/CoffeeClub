@@ -47,9 +47,11 @@ app.use(session({
 /****************************************************
  * Router
  ****************************************************/
-var Coffeer = require('./routes/coffeer');
+var Coffeer = require('./routes/coffeer'),
+    ErrorHandler = require('./routes/error');
 
 app.use('/coffeer', Coffeer);
+app.use(ErrorHandler);
 
 /***********************************************
  * Run

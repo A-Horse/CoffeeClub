@@ -26,6 +26,7 @@
     "morgan": "^1.5.2",
     "multer": "^0.1.8",
     "pg": "^4.3.0",
+    "randomstring": "^1.0.5",
     "redis": "^0.12.1",
     "supertest": "^0.15.0",
     "underscore": "^1.8.3",
