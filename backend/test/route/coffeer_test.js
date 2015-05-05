@@ -36,4 +36,43 @@ describe('Coffeer Router Test', function(){
     });
   });
 
+
+  describe('coffeer login by username', function(){
+    it('should return 200 response', function(done){
+      request(domain)
+      .post('/coffeer/login')
+      .send({
+        username: coffeerData.username,
+        password: coffeerData.password,
+        type: '1'
+      })
+        .end(function(error, res){
+          if(error) throw error;
+          if(res.body.error)
+            throw new Error('Error!');
+          assert.equal(res.status, 200);
+          assert.equal(res.body.username, coffeerData.username);
+          done();
+        });
+    });
+  });
+
+  describe('coffeer login by username but password invalid', function(){
+    it('should return 400 response', function(done){
+      request(domain)
+        .post('/coffeer/login')
+        .send({
+          username: coffeerData.username,
+          password: coffeerData.password + '1',
+          type: '1'
+        })
+        .end(function(error, res){
+          assert.ok(res.body.error);
+          assert.equal(res.status, 400);
+          done();
+        });
+    });
+  });
+
+
 });
