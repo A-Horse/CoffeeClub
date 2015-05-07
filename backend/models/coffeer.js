@@ -51,7 +51,7 @@ var Coffeer = bookshelf.Model.extend({
 
     },
 
-  hasTimestamps: ['created_at', 'updated_at']
+    hasTimestamps: ['created_at', 'updated_at']
 
 }, {
 
@@ -76,6 +76,40 @@ var Coffeer = bookshelf.Model.extend({
         });
     },
 
+    loginByEmail: function() {
+
+    },
+
+
+    /**************************************************
+     * @param {String} username {String} password
+     * @return {[coffeer | false]} res
+     **************************************************/
+
+    loginByUsername: function(username, password) {
+        if (!username || !password)
+            throw new Error('Username and password are both required');
+        var self = this;
+        return new Promise(function(resolve, reject) {
+            new self({
+                    username: username
+                })
+                .fetch({
+                  require: true
+                })
+                .then(function(coffeer) {
+                    bcrypt.compare(password, coffeer.get('password'), function(error, res) {
+                        if (error) return reject(error);
+                        if (res === true) {
+                            return resolve(coffeer.omit('password'));
+                        };
+                        resolve(false);
+                    });
+                }, function(error) {
+                    reject(error);
+                })
+        });
+    }
 
 });
 

@@ -26,4 +26,33 @@ router.post('/', function(req, res, next){
 });
 
 
+/**************************************************
+ * Coffeer Login
+ * @param {String} <username or email>
+ *               {String} password
+ *               {type}   type [1: username, 2: email]
+ * @return {String}
+ **************************************************/
+router.post('/login', function(req, res, next){
+  if(req.body.type === '1'){
+    var username = req.body.username,
+        password = req.body.password;
+    logger.log('debug', 'coffeer login', username + ':' + password);
+    Coffeer.loginByUsername(username, password).then(function(coffeer){
+      if(coffeer === false){
+        return res.status(400).send({
+          error: 'sorry, username or password error!'
+        });
+      }
+      req.session.coffeer = coffeer;
+      return res.send(coffeer);
+    });
+  } else if (req.body.type === '2') {
+
+  } else {
+    return next(new Error('login type is invalid'));
+  }
+});
+
+
 module.exports = router;
