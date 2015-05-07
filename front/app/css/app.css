@@ -66,5 +66,35 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   .project .list-project {
     position: relative;
     width: 100%;
-    margin: 60px 0px;
+    margin: 3.75rem 0px;
     overflow: hidden; }
+    .project .list-project .wrap {
+      padding: 0;
+      margin: auto 5.75rem; }
+    .project .list-project .p-item {
+      transform: matrix(1, 0, 0, 1, 0, 0);
+      visibility: inherit;
+      opacity: 1;
+      padding: 0;
+      margin: 0;
+      height: 25rem;
+      attachment: fixed;
+      repeat: no-repeat;
+      background-size: 100% 100%; }
+
+/*---project list picture-------------*/
+@media screen and (max-width: 768px) {
+  .project .list-project .thumb {
+    height: 300px; } }
+
+#p-article {
+  background-image: url("/img/project_articles.jpg"); }
+
+#p-bbs {
+  background-image: url("/img/project_bbs.jpg"); }
+
+#p-wiki {
+  background-image: url("/img/project_wiki.jpg"); }
+
+#p-shop {
+  background-image: url("/img/project_shop.jpg"); }

@@ -1,3 +1,4 @@
+$backend: "http://10.42.0.30:8989";
 $rem-base: 16px !default;
 @function strip-unit($num) {
     @return $num / ($num * 0 + 1);
@@ -175,11 +176,50 @@ video {
             margin: 20px 0px;
         }
     }
-
     .list-project {
         position: relative;
         width: 100%;
-        margin: 60px 0px;
+        margin: rem-calc(60) 0px;
         overflow: hidden;
+        .wrap {
+            padding: 0;
+            margin: auto rem-calc(92);
+        }
+        .p-item {
+            transform: matrix(1, 0, 0, 1, 0, 0);
+            visibility: inherit;
+            opacity: 1;
+            padding: 0;
+            margin: 0;
+            height: rem-calc(400);
+            attachment: fixed;
+            repeat: no-repeat;
+            background: {
+                size: 100% 100%;
+            }
+        }
     }
+}
+/*---project list picture-------------*/
+@media screen and (max-width: 768px) {
+  .project .list-project .thumb {
+     height: 300px;
+    }
+  }
+
+
+#p-article {
+    background-image: url("/img/project_articles.jpg");
+}
+
+#p-bbs {
+    background-image: url("/img/project_bbs.jpg");
+}
+
+#p-wiki {
+    background-image: url("/img/project_wiki.jpg");
+}
+
+#p-shop {
+    background-image: url("/img/project_shop.jpg");
 }
