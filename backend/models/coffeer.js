@@ -65,6 +65,7 @@ var Coffeer = bookshelf.Model.extend({
                     //---clean up some columns
                     coffeerData.password = password;
                     coffeerData.email = coffeerData.email.toLowerCase().trim();
+                  coffeerData.username = coffeerData.username.toLowerCase().trim();
                     //.........maybe more
                     new self(coffeerData).save().then(function(coffeer) {
                         resolve(coffeer);
@@ -76,8 +77,30 @@ var Coffeer = bookshelf.Model.extend({
         });
     },
 
-    loginByEmail: function() {
-
+  loginByEmail: function(email, password) {
+      if(!email || !password){
+        throw new Error('Email and password are both required');
+      }
+    var self = this;
+    return new Promise(function(resolve, reject) {
+      new self({
+        email: email.toLowerCase().trim()
+      })
+        .fetch({
+          require: true
+        })
+        .then(function(coffeer) {
+          bcrypt.compare(password, coffeer.get('password'), function(error, res) {
+            if (error) return reject(error);
+            if (res === true) {
+              return resolve(coffeer.omit('password'));
+            };
+            resolve(false);
+          });
+        }, function(error) {
+          reject(error);
+        })
+    });
     },
 
 
@@ -92,7 +115,7 @@ var Coffeer = bookshelf.Model.extend({
         var self = this;
         return new Promise(function(resolve, reject) {
             new self({
-                    username: username
+              username: username.toLowerCase().trim()
                 })
                 .fetch({
                   require: true

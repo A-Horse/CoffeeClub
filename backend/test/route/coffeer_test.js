@@ -51,7 +51,7 @@ describe('Coffeer Router Test', function(){
           if(res.body.error)
             throw new Error('Error!');
           assert.equal(res.status, 200);
-          assert.equal(res.body.username, coffeerData.username);
+          assert.equal(res.body.username, coffeerData.username.toLowerCase().trim());
           done();
         });
     });
@@ -65,6 +65,44 @@ describe('Coffeer Router Test', function(){
           username: coffeerData.username,
           password: coffeerData.password + '1',
           type: '1'
+        })
+        .end(function(error, res){
+          assert.ok(res.body.error);
+          assert.equal(res.status, 400);
+          done();
+        });
+    });
+  });
+
+
+  describe('coffeer login by email', function(){
+    it('should return 200 response', function(done){
+      request(domain)
+      .post('/coffeer/login')
+      .send({
+        email: coffeerData.email,
+        password: coffeerData.password,
+        type: '2'
+      })
+        .end(function(error, res){
+          if(error) throw error;
+          if(res.body.error)
+            throw new Error('Error!');
+          assert.equal(res.status, 200);
+          assert.equal(res.body.email, coffeerData.email.toLowerCase().trim());
+          done();
+        });
+    });
+  });
+
+  describe('coffeer login by email but password invalid', function(){
+    it('should return 400 response', function(done){
+      request(domain)
+        .post('/coffeer/login')
+        .send({
+          email: coffeerData.email,
+          password: coffeerData.password + '1',
+          type: '2'
         })
         .end(function(error, res){
           assert.ok(res.body.error);

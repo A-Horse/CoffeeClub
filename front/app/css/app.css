@@ -8,7 +8,7 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: top;
-  background-size: 100% auto;
+  background-size: 100% 100%;
   width: 100%;
   height: 655px;
   position: fixed;
@@ -67,24 +67,93 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
     position: relative;
     width: 100%;
     margin: 3.75rem 0px;
-    overflow: hidden; }
+    overflow: hidden;
+    z-index: 3; }
     .project .list-project .wrap {
       padding: 0;
-      margin: auto 5.75rem; }
+      margin: auto 5.75rem;
+      z-index: 3; }
     .project .list-project .p-item {
+      position: relative;
       transform: matrix(1, 0, 0, 1, 0, 0);
-      visibility: inherit;
-      opacity: 1;
       padding: 0;
       margin: 0;
-      height: 25rem;
+      height: 25rem; }
+      .project .list-project .p-item a, .project .list-project .p-item a:hover, .project .list-project .p-item a:active {
+        z-index: 3;
+        outline: medium none;
+        text-decoration: none;
+        color: #000; }
+      .project .list-project .p-item a:hover .thumb {
+        transition: all 0.1s ease-out 0.1s;
+        background-size: 100.9% 100.9%; }
+      .project .list-project .p-item a:hover .overlay {
+        visibility: hidden; }
+    .project .list-project .thumb {
+      padding: 0;
+      margin: 0;
+      position: relative;
+      transform: matrix(1, 0, 0, 1, 0, 0);
+      opacity: 1;
       attachment: fixed;
       repeat: no-repeat;
-      background-size: 100% 100%; }
+      background-size: 100% 100%;
+      z-index: 1;
+      width: 100%;
+      height: 100%; }
+    .project .list-project .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      background-color: rgba(54, 57, 65, 0.8);
+      line-height: 300px;
+      padding-left: 50px;
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+      transition: all 0.1s ease-out 0s;
+      transition-timing-function: linear;
+      -vendor-animation-duration: 3s;
+      -vendor-animation-delay: 2s;
+      -vendor-animation-iteration-count: infinite; }
+      .project .list-project .overlay .p-title {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: normal;
+        opacity: 1;
+        visibility: visible;
+        margin: 0px;
+        padding: 0px; }
+        .project .list-project .overlay .p-title .sep {
+          display: inline-block;
+          vertical-align: middle;
+          height: 1px;
+          width: 14px;
+          background-color: #D4D4D5;
+          margin-right: 4px; }
+        .project .list-project .overlay .p-title .categories {
+          display: inline-block;
+          vertical-align: middle;
+          color: #D4D4D5;
+          font-family: "sans";
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 14px;
+          letter-spacing: 0.05em;
+          text-transform: uppercase; }
+        .project .list-project .overlay .p-title .desc {
+          color: #FFF;
+          font-family: "sans";
+          font-size: 30px;
+          line-height: 30px;
+          margin-top: 10px;
+          max-width: 300px; }
 
 /*---project list picture-------------*/
 @media screen and (max-width: 768px) {
-  .project .list-project .thumb {
+  .project .list-project .p-item {
     height: 300px; } }
 
 #p-article {
