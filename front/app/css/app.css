@@ -1,6 +1,20 @@
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  border: 0px none;
+  font-family: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  font-size-adjust: inherit;
+  font-stretch: inherit;
+  font-feature-settings: inherit;
+  font-language-override: inherit;
+  font-kerning: inherit;
+  font-synthesis: inherit;
+  font-variant: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
 
 /*-------splash----------- */
 .splash {
@@ -22,7 +36,21 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   top: 655px;
   width: 100%;
   height: 5rem;
-  z-index: 2; }
+  z-index: 2;
+  visibility: visible; }
+  .header .left {
+    float: left;
+    padding-top: 1.375rem;
+    padding-left: 2rem; }
+    .header .left .logo h2 {
+      font-size: 30px;
+      font-weight: bold;
+      color: #FFFFFF; }
+    .header .left .logo:hover h2 {
+      color: #333333; }
+  .header .right {
+    float: right;
+    padding-top: 29px; }
 
 /*--------------project-------------------------*/
 .project {
@@ -150,11 +178,93 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
           line-height: 30px;
           margin-top: 10px;
           max-width: 300px; }
+  .project .p-button {
+    margin-top: 60px;
+    width: 100%;
+    text-align: center; }
+    .project .p-button a {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0;
+      padding: 8px 14px 5px 14px;
+      border: 2px solid #2D373A;
+      text-decoration: none;
+      overflow: hidden;
+      transition: all 0.2s ease-out 0s; }
+      .project .p-button a .bg {
+        position: absolute;
+        width: 100%;
+        height: 0;
+        z-index: 0;
+        background-color: #2D373A;
+        top: 0;
+        left: 0;
+        transition: height 0.2s ease-out 0s; }
+      .project .p-button a .text {
+        font-size: 16px;
+        line-height: 16px;
+        color: #2D373A;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        transition: color 0.2s ease-out 0s; }
+    .project .p-button a, .project .p-button a:hover, .project .p-button a:active {
+      outline: medium none;
+      text-decoration: none;
+      color: #000; }
+    .project .p-button a:hover .bg {
+      height: 100%; }
+    .project .p-button a:hover .text {
+      color: #FFFFFF;
+      font-weight: bold; }
 
-/*---project list picture-------------*/
+/*----------dash-footer-----------*/
+.dash-footer {
+  background-color: #F2F2F2;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  position: relative;
+  bottom: 0;
+  padding-top: 5rem;
+  text-align: center;
+  margin-top: 3.75rem;
+  width: 100%;
+  height: 17.5rem; }
+  .dash-footer .footer-inner .footer-wrap {
+    vertical-align: middle; }
+    .dash-footer .footer-inner .footer-wrap .footer-title h2 {
+      font-size: 25px;
+      font-weight: bold; }
+    .dash-footer .footer-inner .footer-wrap .sep {
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+      vertical-align: middle;
+      height: 2px;
+      width: 14px;
+      background-color: #D4D4D5;
+      margin-right: 4px; }
+      .dash-footer .footer-inner .footer-wrap .sep span {
+        display: inline-block;
+        vertical-align: top;
+        background-color: #2D373A;
+        width: 28px;
+        height: 2px; }
+    .dash-footer .footer-inner .footer-wrap .content {
+      margin-top: 1.875rem;
+      font-size: 18px;
+      font-weight: bold; }
+
+/*--- picture-------------*/
 @media screen and (max-width: 768px) {
   .project .list-project .p-item {
     height: 300px; } }
+
+.project .dash-footer {
+  background-image: url("/img/dash_footer2.jpg"); }
 
 #p-article {
   background-image: url("/img/project_articles.jpg"); }
