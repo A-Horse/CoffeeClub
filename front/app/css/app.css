@@ -27,8 +27,18 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   height: 655px;
   position: fixed;
   z-index: -1;
-  margin: 0; }
+  margin: 0;
+  padding-top: 15.625rem;
+  padding-left: 15.625rem;
+  padding-right: 15.625rem; }
+  .splash .text {
+    vertical-align: middle;
+    color: #CCCC99;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center; }
 
+/*------------mobile-header----------*/
 /*------------header------------------*/
 .header {
   background-color: #330000;
@@ -50,7 +60,40 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
       color: #333333; }
   .header .right {
     float: right;
-    padding-top: 29px; }
+    padding-top: 1.3125rem; }
+    .header .right ul {
+      list-style: outside none none; }
+      .header .right ul li {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 3.125rem; }
+        .header .right ul li a, .header .right ul li a:hover, .header .right ul li a:active {
+          outline: medium none;
+          text-decoration: none;
+          color: #000;
+          position: relative;
+          display: inline-block;
+          vertical-align: middle;
+          padding: 10px 14px;
+          text-decoration: none;
+          overflow: hidden;
+          transition: all 0.2s ease-out 0s; }
+        .header .right ul li .text {
+          color: rgba(255, 255, 255, 0.4);
+          font-family: "FS Joey Bold";
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 16px;
+          color: #2D373A;
+          position: relative;
+          z-index: 1;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          transition: color 0.2s ease-out 0s; }
+        .header .right ul li a:hover .text {
+          color: #FFFFFF; }
+      .header .right ul li:first-child {
+        margin-left: 0px; }
 
 /*--------------project-------------------------*/
 .project {

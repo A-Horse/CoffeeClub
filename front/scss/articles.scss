@@ -1,0 +1,152 @@
+$backend: "http://10.42.0.30:8989";
+$rem-base: 16px !default;
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base) {
+    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    @if ($value==0rem) {
+        $value: 0;
+    } // Turn 0rem into 0
+    @return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+    $max: length($values);
+    @if $max==1 {
+        @return convert-to-rem(nth($values, 1), $base-value);
+    }
+    $remValues: ();
+    @for $i from 1 through $max {
+        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    }
+    @return $remValues;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    font-family: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    font-size-adjust: inherit;
+    font-stretch: inherit;
+    font-feature-settings: inherit;
+    font-language-override: inherit;
+    font-kerning: inherit;
+    font-synthesis: inherit;
+    font-variant: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+a,
+a:hover,
+a:active {
+    outline: medium none;
+    text-decoration: none;
+}
+/*---------ONLY BELOW NEW-----------*/
+
+.articles-module {
+    .navbar {
+        background: {
+            color: #990000;
+        }
+        .a-nav-right {
+            padding: {
+                right: rem-calc(20);
+            }
+            a {
+                font: {
+                    size: 17px;
+                    weight: bold;
+                }
+                color: #CCCCFF;
+            }
+            a:hover {
+                color: #FFFFFF;
+            }
+        }
+    }
+
+      /*----------SPLAASH------------*/
+        .atc-splash {
+          .picture{
+            background: {
+            image: url("")
+            }
+            }
+          }
+}

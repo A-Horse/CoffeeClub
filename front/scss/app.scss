@@ -125,9 +125,27 @@ video {
     position: fixed;
     z-index: -1;
     margin: 0;
+    padding: {
+    top: rem-calc(250);
+    left: rem-calc(250);
+    right: rem-calc(250);
+    }
+    .text {
+      vertical-align: middle;
+      color: #CCCC99;
+      font: {
+      size: 3em;
+      weight: bold;
+      }
+        text:{
+        align: center;
+        }
+      }
 }
-/*------------header------------------*/
+/*------------mobile-header----------*/
 
+
+/*------------header------------------*/
 .header {
     background: {
         color: #330000;
@@ -138,31 +156,70 @@ video {
     height: rem-calc(80);
     z-index: 2;
     visibility: visible;
-
     .left {
-      float: left;
-      padding-top: rem-calc(22);
-      padding-left: rem-calc(32);
-      .logo{
-        h2 {
-          font: {
-          size: 30px;
-          weight: bold;
-          }
-          color: #FFFFFF;
-          }
-        }
-          .logo:hover{
-            h2{
-              color: #333333;
-              }
+        float: left;
+        padding-top: rem-calc(22);
+        padding-left: rem-calc(32);
+        .logo {
+            h2 {
+                font: {
+                    size: 30px;
+                    weight: bold;
+                }
+                color: #FFFFFF;
             }
-      }
-
-        .right {
-          float: right;
-          padding-top: 29px;
-          }
+        }
+        .logo:hover {
+            h2 {
+                color: #333333;
+            }
+        }
+    }
+    .right {
+        float: right;
+        padding-top: rem-calc(21);
+        ul {
+            list-style: outside none none;
+            li {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: rem-calc(50);
+                a, a:hover, a:active {
+                    outline: medium none;
+                    text-decoration: none;
+                    color: #000;
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: 10px 14px;
+                    text-decoration: none;
+                    overflow: hidden;
+                    transition: all 0.2s ease-out 0s;
+                }
+                .text {
+                    color: rgba(255, 255, 255, 0.4);
+                    font-family: "FS Joey Bold";
+                    font-size: 20px;
+                    font-weight: bold;
+                    line-height: 16px;
+                    color: #2D373A;
+                    position: relative;
+                    z-index: 1;
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                    transition: color 0.2s ease-out 0s;
+                }
+                  a:hover{
+                  .text {
+                    color: #FFFFFF;
+                    }
+                  }
+            }
+            li:first-child {
+                margin-left: 0px;
+            }
+        }
+    }
 }
 /*--------------project-------------------------*/
 
@@ -425,13 +482,13 @@ video {
                     height: 2px;
                 }
             }
-              .content {
+            .content {
                 margin-top: rem-calc(30);
                 font: {
-                size: 18px;
-                weight: bold;
+                    size: 18px;
+                    weight: bold;
                 }
-                }
+            }
         }
     }
 }
