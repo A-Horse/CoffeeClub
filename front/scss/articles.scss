@@ -122,8 +122,10 @@ a:active {
 .articles-module {
     .navbar {
         background: {
-            color: #990000;
+            color: #b71c1c;
         }
+        position: fixed;
+        border: 0;
         .a-nav-right {
             padding: {
                 right: rem-calc(20);
@@ -140,13 +142,77 @@ a:active {
             }
         }
     }
+    /*----------SPLAASH------------*/
 
-      /*----------SPLAASH------------*/
-        .atc-splash {
-          .picture{
-            background: {
-            image: url("")
+    .atc-splash {
+        background: {
+            color: #f44336;
+        }
+        height: rem-calc(230);
+        width: 100%;
+        top: 0;
+        position: fixed;
+        z-index: -1;
+        .backgroud {
+            .picture {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background: {
+                    image: url("/img/articles_splash_b.jpg");
+                    size: 100% auto;
+                }
             }
+            .overlay {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                background: {
+                    color: rgba(52, 0, 0, 0.6);
+                }
             }
-          }
+            .title {
+                z-index: 3;
+                position: absolute;
+                top: rem-calc(70);
+                vertical-align: middle;
+                text-align: center;
+                left: rem-calc(-80);
+                width: 100%;
+                .text {
+                    h1 {
+                        font: {
+                            family: GoodDog;
+                            size: 8em;
+                            weight: bold;
+                        }
+                        color: #CCCCCC;
+                        text-shadow: 5px 5px #000000;
+                    }
+                }
+
+            }
+
+            .inner-circle {
+                .picture {
+                    z-index: 3;
+                    margin: {
+                        top: rem-calc(72);
+                    }
+                    right: rem-calc(72);
+                    float: right;
+                    background: {
+                        image: url("/img/articles_splash.jpg");
+                        size: 105% 105%;
+                    }
+                    height: rem-calc(140);
+                    width: rem-calc(140);
+                    border: {
+                        radius: rem-calc(80);
+                    }
+                }
+            }
+        }
+    }
 }

@@ -6,6 +6,16 @@ angular.module('coffee', ['ui.router', 'textAngular', 'coffee.controllers'])
               templateUrl: 'templates/dash.html',
               controller: 'DashCtrl'
             })
+        .state('login', {
+          url: '/login',
+          templateUrl: 'templates/login.html',
+          controller: 'LoginCtrl'
+        })
+        .state('signin', {
+          url: '/signin',
+          templateUrl: 'templates/signin.html',
+          controller: 'SigninCtrl'
+        })
         .state('articles', {
           url: '/articles',
           templateUrl: 'templates/articles.html',
