@@ -1,0 +1,102 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  line-height: inherit;
+  vertical-align: baseline; }
+
+a, a:hover, a:active {
+  outline: medium none;
+  text-decoration: none; }
+
+/*---------ONLY BELOW NEW-----------*/
+.signin {
+  margin-left: 11.25rem;
+  margin-right: 11.25rem; }
+  .signin .coffee-header {
+    vertical-align: middle; }
+    .signin .coffee-header .aid-head {
+      width: 100%;
+      height: 1.375rem;
+      opacity: 0.8;
+      margin-bottom: 0;
+      background-color: #795548; }
+      .signin .coffee-header .aid-head p {
+        font-size: 1.05em;
+        color: #CCCCCC;
+        padding-left: 5px; }
+    .signin .coffee-header .logo .picture {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      max-width: 100%;
+      max-height: 100%; }
+    .signin .coffee-header .coffee-nav {
+      float: right;
+      position: relative;
+      left: -50%;
+      text-align: left; }
+      .signin .coffee-header .coffee-nav ul {
+        list-style: none;
+        position: relative;
+        left: 50%; }
+      .signin .coffee-header .coffee-nav li {
+        float: left;
+        position: relative; }
+        .signin .coffee-header .coffee-nav li a {
+          font-size: 1.2em;
+          float: left;
+          text-align: center; }
+  .signin .reg-main {
+    margin-top: 3.125rem;
+    padding-top: 1.875rem;
+    padding-left: 1.875rem;
+    padding-right: 1.875rem;
+    border-radius: 8px;
+    background-color: #efebe9; }
+    .signin .reg-main .base legend {
+      font-family: georgia;
+      color: #ADADAD;
+      border: medium none;
+      font-size: 36px;
+      font-style: italic; }
+    .signin .reg-main .base .form-group label {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1.05em;
+      color: #ADADAD;
+      display: inline-block;
+      max-width: 100%;
+      margin-bottom: 5px; }
+    .signin .reg-main .sigin-picture {
+      button: 0; }
+    .signin .reg-main .btn.account-btn {
+      width: 100%;
+      font-weight: bold;
+      font-size: 1.05em;
+      font-family: montserratregular;
+      font-style: normal;
+      background-repeat: no-repeat;
+      background-position: 96% 50%;
+      background-color: #795548;
+      text-align: left;
+      padding: 4px 12px;
+      text-transform: uppercase;
+      color: #FFF;
+      transition: all 250ms ease-out 0s; }
+      .signin .reg-main .btn.account-btn span {
+        position: absolute;
+        top: 25%;
+        right: 8%; }
+    .signin .reg-main .btn.account-btn:hover {
+      background-color: #585858;
+      color: #FFF; }
+  .signin .after-main a {
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold; }
+  .signin .signin-footer img {
+    display: block;
+    margin: auto; }
