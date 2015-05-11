@@ -54,55 +54,43 @@ a, a:hover, a:active {
     text-transform: uppercase; }
 
 .login-nav {
-  top: 1%;
-  position: absolute; }
+  position: absolute;
+  top: 10px; }
   .login-nav ul {
-    list-style: outside none none; }
-  .login-nav .bread {
-    width: 12.5rem; }
-
-.coffee-breadcrumb .btn-offbutton {
-  vertical-align: middle;
-  margin-right: 25px;
-  margin-left: 25px;
-  float: left;
-  margin-top: 15px;
-  transition: all 0.25s ease 0s;
-  width: 24px;
-  height: 25px;
-  display: inline-block; }
-  .coffee-breadcrumb .btn-offbutton .sep-bar {
-    width: 27px;
-    height: 3px;
-    background-color: #000;
-    margin-bottom: 6px;
-    border-left: medium none;
-    border-right: medium none;
-    background: none repeat scroll 0% 0% #000;
-    transition: all 0.25s ease 0s; }
-  .coffee-breadcrumb .btn-offbutton .top {
-    border-bottom: 1px solid;
-    border-color: #242424; }
-  .coffee-breadcrumb .btn-offbutton .middle {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    border-color: #131313; }
-  .coffee-breadcrumb .btn-offbutton .bottom {
-    border-top: 1px solid;
-    margin-bottom: 0px;
-    border-color: #353535; }
-
-.bread .coffee-breadcrumb .btn-offbutton:hover .top {
-  transform: translateY(-5px); }
-.bread .coffee-breadcrumb .btn-offbutton:hover .bottom {
-  transform: translateY(5px); }
-
-.bread .coffee-breadcrumb .btn-offbutton:hover + .dropdownmenu {
-  display: block; }
-
-.bread .coffee-breadcrumb .dropdownmenu {
-  display: none;
-  left: 0px;
-  padding-top: 25px;
-  padding-bottom: 20px;
-  box-sizing: border-box; }
+    padding: 0;
+    list-style: none; }
+  .login-nav ul li {
+    float: left;
+    width: 100px;
+    line-height: 25px; }
+  .login-nav ul ul {
+    display: none;
+    margin-left: 1.25rem; }
+    .login-nav ul ul li {
+      font-family: ChunkFive;
+      font-size: 1.05em; }
+  .login-nav li:hover > ul {
+    display: block; }
+  .login-nav .btn-offbutton {
+    vertical-align: middle;
+    margin-right: 25px;
+    margin-left: 25px;
+    float: left;
+    margin-top: 15px;
+    transition: all 0.25s ease 0s;
+    width: 24px;
+    height: 25px;
+    display: block; }
+    .login-nav .btn-offbutton .sep-bar {
+      width: 27px;
+      height: 3px;
+      background-color: #000;
+      margin-bottom: 6px;
+      border-left: medium none;
+      border-right: medium none;
+      background: none repeat scroll 0% 0% #000;
+      transition: all 0.25s ease 0s; }
+  .login-nav .btn-offbutton:hover .top {
+    transform: translateY(-5px); }
+  .login-nav .btn-offbutton:hover .bottom {
+    transform: translateY(5px); }

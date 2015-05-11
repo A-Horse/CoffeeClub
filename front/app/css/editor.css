@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  line-height: inherit;
+  vertical-align: baseline; }
+
+/************************************/
+.editor .edit-main {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto; }
+  .editor .edit-main .text-angular {
+    margin-bottom: 0.625rem; }
+  .editor .edit-main .bottom-toolbar .glyphicon-picture {
+    vertical-align: middle;
+    font-size: 145%; }
+  .editor .edit-main .bottom-toolbar .btn {
+    padding: 0px 8px; }

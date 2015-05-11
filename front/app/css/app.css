@@ -310,14 +310,14 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 #p-shop {
   background-image: url("/img/project_shop.jpg"); }
 
-.correct-check {
+.correct_check {
   position: relative;
   background-image: url("/icons/correct.png");
   background-repeat: no-repeat;
   background-size: 1.25rem 1.25rem;
   background-position: 98% 50%; }
 
-.error-check {
+.error_check {
   position: relative;
   background-image: url("/icons/error.png");
   background-repeat: no-repeat;
@@ -326,3 +326,6 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
 
 .coffee-footer {
   color: #777777; }
+
+.error-container .error {
+  color: red; }

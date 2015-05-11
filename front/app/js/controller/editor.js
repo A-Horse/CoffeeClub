@@ -3,4 +3,7 @@ angular.module('coffee.controllers')
     '$scope', function(
       $scope){
 
+      $scope.show = function(){
+        alert($scope.htmlVariable);
+      };
     }]);

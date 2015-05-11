@@ -54,13 +54,13 @@ a, a:hover, a:active {
     padding-right: 1.875rem;
     border-radius: 8px;
     background-color: #efebe9; }
-    .signin .reg-main .base legend {
+    .signin .reg-main .fieldset legend {
       font-family: georgia;
       color: #ADADAD;
       border: medium none;
       font-size: 36px;
       font-style: italic; }
-    .signin .reg-main .base .form-group label {
+    .signin .reg-main .fieldset .form-group label {
       text-transform: uppercase;
       font-weight: bold;
       font-size: 1.05em;
@@ -100,3 +100,10 @@ a, a:hover, a:active {
   .signin .signin-footer img {
     display: block;
     margin: auto; }
+
+.profile-avatars {
+  height: 100%; }
+  .profile-avatars img {
+    margin-top: 100%;
+    position: relative;
+    left: 15%; }
