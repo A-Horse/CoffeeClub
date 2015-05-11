@@ -1,0 +1,245 @@
+$backend: "http://10.42.0.30:8989";
+$rem-base: 16px !default;
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+@function convert-to-rem($value, $base-value: $rem-base) {
+    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+    @if ($value==0rem) {
+        $value: 0;
+    } // Turn 0rem into 0
+    @return $value;
+}
+
+@function rem-calc($values, $base-value: $rem-base) {
+    $max: length($values);
+    @if $max==1 {
+        @return convert-to-rem(nth($values, 1), $base-value);
+    }
+    $remValues: ();
+    @for $i from 1 through $max {
+        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    }
+    @return $remValues;
+}
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    vertical-align: baseline;
+}
+
+a,
+a:hover,
+a:active {
+    outline: medium none;
+    text-decoration: none;
+}
+/*---------ONLY BELOW NEW-----------*/
+
+.login {
+    margin: {
+        bottom: rem-calc(50);
+    }
+    padding: {
+        top: auto;
+        right: auto;
+        left: auto;
+        bottom: rem-calc(50);
+    }
+    height: 100%;
+    .big-title {
+        font: {
+            family: ChunkFive;
+            size: 4em;
+        }
+        color: #795548;
+        width: 100%;
+        text: {
+            align: center;
+            shadow: 2px 2px 3px #000000;
+        }
+        margin: {
+            top: rem-calc(80);
+        }
+    }
+    .line-backgound {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        height: 60%;
+        width: 100%;
+        background: {
+            image: url("/img/wood_banch.jpg");
+            size: 100%;
+        }
+    }
+    .btn-coffee {
+        background-color: #8d6e63;
+        color: #000;
+        font: {
+            size: 1em;
+            weight: bold;
+        }
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .island {
+        .main-col {
+            position: relative;
+            width: 65%;
+            margin: {
+                top: rem-calc(0);
+                left: auto;
+                right: auto;
+            }
+            padding: rem-calc(30);
+            .reg-user {
+                border: {
+                    right: 1px solid #000;
+                }
+            }
+            .new-user {}
+        }
+    }
+    .title {
+        h4 {
+            word-break: break-all;
+            font: {
+                size: 1.5em;
+            }
+            text: {
+                transform: uppercase;
+            }
+        }
+    }
+}
+
+
+
+.login-nav {
+  position: absolute;
+  top: 10px;
+    ul {
+        padding: 0;
+        list-style: none;
+    }
+    ul li {
+        float: left;
+        width: 100px;
+        line-height: 25px;
+    }
+    ul ul {
+        display: none;
+      margin-left: rem-calc(20);
+      li{
+        font: {
+        family: ChunkFive;
+        size: 1.05em;
+        }
+        }
+    }
+    li:hover > ul {
+        display: block;
+    }
+    .btn-offbutton {
+        vertical-align: middle;
+        margin-right: 25px;
+        margin-left: 25px;
+        float: left;
+        margin-top: 15px;
+        transition: all 0.25s ease 0s;
+        width: 24px;
+        height: 25px;
+        display: block;
+        .sep-bar {
+            width: 27px;
+            height: 3px;
+            background-color: #000;
+            margin-bottom: 6px;
+            border-left: medium none;
+            border-right: medium none;
+            background: none repeat scroll 0% 0% #000;
+            transition: all 0.25s ease 0s;
+        }
+    }
+    .btn-offbutton:hover {
+        .top {
+            transform: translateY(-5px);
+        }
+        .bottom {
+            transform: translateY(5px);
+        }
+    }
+}

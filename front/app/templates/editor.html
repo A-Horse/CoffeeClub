@@ -85,10 +85,10 @@
            <div class="row bottom-toolbar">
              <div class="col-sm-3">
                <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
-               <button class="btn btn-default">uploda picture</button>
+               <button class="btn btn-default" ng-click="open()">uploda picture</button>
              </div>
-             <div class="col-sm-2">
-
+             <div class="col-sm-9">
+               <div ng-show="selected">Selection from a modal: {{ selected }}</div>
              </div>
            </div>
 
@@ -100,3 +100,22 @@
    </div>
 <!-- END EDIT MAIN -->
 </div>
+
+
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li ng-repeat="item in items">
+        <a ng-click="selected.item = item">{{ item }}</a>
+      </li>
+    </ul>
+    Selected: <b>{{ selected.item }}</b>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>

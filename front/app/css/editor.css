@@ -13,6 +13,7 @@
   .editor .edit-main .text-angular {
     margin-bottom: 0.625rem; }
   .editor .edit-main .bottom-toolbar .glyphicon-picture {
+    top: -5%;
     vertical-align: middle;
     font-size: 145%; }
   .editor .edit-main .bottom-toolbar .btn {

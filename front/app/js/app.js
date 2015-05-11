@@ -1,4 +1,8 @@
-angular.module('coffee', ['ui.router', 'textAngular', 'coffee.controllers'])
+angular.module('coffee', [
+  'ui.router',
+  'textAngular',
+  'ui.bootstrap',
+  'coffee.controllers'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('dash', {
