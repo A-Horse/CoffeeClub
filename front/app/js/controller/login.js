@@ -35,6 +35,7 @@ angular.module('coffee.controllers')
                       if(data.error){
                         $scope.error = true;
                       } else {
+                        localStorage.setItem('coffeerName', data.username);
                         $location.path('dash');
                       }
                     }).error(function(data, status, headers, config) {

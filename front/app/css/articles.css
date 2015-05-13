@@ -24,6 +24,14 @@ a, a:hover, a:active {
         color: #CCCCFF; }
       .articles-module .navbar .a-nav-right a:hover {
         color: #FFFFFF; }
+    .articles-module .navbar .a-nav-right-user {
+      padding-right: 1.25rem; }
+      .articles-module .navbar .a-nav-right-user a {
+        font-size: 17px;
+        font-weight: bold;
+        color: #CCCCFF; }
+      .articles-module .navbar .a-nav-right-user a:hover {
+        color: #FFFFFF; }
   .articles-module .atc-splash {
     background-color: #f44336;
     height: 14.375rem;

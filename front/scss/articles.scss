@@ -130,6 +130,21 @@ a:active {
                 color: #FFFFFF;
             }
         }
+          .a-nav-right-user{
+            padding: {
+                right: rem-calc(20);
+            }
+             a {
+                font: {
+                    size: 17px;
+                    weight: bold;
+                }
+                color: #CCCCFF;
+            }
+ a:hover {
+                color: #FFFFFF;
+            }
+            }
     }
     /*----------SPLAASH------------*/
 
