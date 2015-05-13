@@ -11,15 +11,21 @@
         </form>
 
         <!-- LOGIN OR REGISTER -->
-        <p class="navbar-text navbar-right a-nav-right">
-          <a href="/#/signin" class="navbar-link">
-            SIGN IN
-          </a>
-          <span>/</span>
-            <a href="/#/login" class="navbar-link">
-              LOGIN
-            </a>
-        </p>
+
+  <p ng-show="loginShow" class="navbar-text navbar-right a-nav-right">
+    <a href="#signin" class="navbar-link">
+      SIGN IN
+    </a>
+    <span>/</span>
+    <a href="#login" class="navbar-link">
+      LOGIN
+    </a>
+  </p>
+
+<p ng-show="coffeerName">
+  <a href="#profile">{{coffeerName}}</a>
+</p>
+
     </nav>
 
     <div class="atc-splash">

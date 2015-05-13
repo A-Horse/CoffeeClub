@@ -104,6 +104,6 @@ a, a:hover, a:active {
 .profile-avatars {
   height: 100%; }
   .profile-avatars img {
-    margin-top: 100%;
+    margin-top: 120%;
     position: relative;
     left: 15%; }

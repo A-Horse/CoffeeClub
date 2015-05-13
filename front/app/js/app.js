@@ -15,6 +15,11 @@ angular.module('coffee', [
           templateUrl: 'templates/login.html',
           controller: 'LoginCtrl'
         })
+        .state('logout', {
+          url: '/logout',
+          templateUrl: 'templates/logout.html',
+          controller: 'LogoutCtrl'
+        })
         .state('signin', {
           url: '/signin',
           templateUrl: 'templates/signin.html',

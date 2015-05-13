@@ -38,19 +38,22 @@ app.use(cookieParser());
 app.use(session({
     store: new RedisStore(setting.redis_session),
     secret: 'LoveRaspberryPi',
-    name: 'sessionid22',
+    name: 'sessionid',
     resave: false,
     saveUninitialized: false
 }));
 
+app.use(express.static('../front/app'));
 
 /****************************************************
  * Router
  ****************************************************/
 var Coffeer = require('./routes/coffeer'),
+    Article = require('./routes/article'),
     ErrorHandler = require('./routes/error');
 
 app.use('/coffeer', Coffeer);
+app.use('/article', Article);
 app.use(ErrorHandler);
 
 /***********************************************

@@ -48,6 +48,8 @@ a, a:hover, a:active {
     padding: 1.875rem; }
     .login .island .main-col .reg-user {
       border-right: 1px solid #000; }
+      .login .island .main-col .reg-user .alert.alert-danger {
+        padding: 5px 20px; }
   .login .title h4 {
     word-break: break-all;
     font-size: 1.5em;

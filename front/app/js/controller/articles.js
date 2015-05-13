@@ -1,6 +1,12 @@
 angular.module('coffee.controllers')
-  .controller('ArticlesCtrl', [
-    '$scope', function(
-      $scope){
+    .controller('ArticlesCtrl', [
+        '$scope'
+        '$http', ,
+        function(
+            $scope,
+            $http) {
 
-  }]);
+          var coffeerName = localStorage.getItem('coffeerName');
+
+        }
+    ]);

@@ -35,11 +35,11 @@
                     <div class="sep-bar bottom"></div>
                 </div>
                 <ul>
-                    <li><a href="https://www.v76.com/">Home</a></li>
-                    <li><a href="https://www.v76.com/">Articles</a></li>
-                    <li><a href="https://www.v76.com/">Wiki</a></li>
-                    <li><a href="https://www.v76.com/">Forum</a></li>
-                    <li><a href="https://www.v76.com/">Shop</a></li>
+                    <li><a href="#dash">Home</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#wiki">Wiki</a></li>
+                    <li><a href="#forum">Forum</a></li>
+                    <li><a href="#shop">Shop</a></li>
                 </ul>
             </li>
         </ul>
@@ -76,7 +76,7 @@
                                         *Email & surname
                                     </label>
                                     <div class="controls">
-                                        <input id="name" class="form-control correct-check" type="text" name="name" maxlength="255"></input>
+                                        <input id="name" class="form-control correct-check" type="text" name="name" ng-model="loginData.loginstr" maxlength="255"></input>
                                         <label class="control-label" for="id_name">
                                             *Password
                                         </label>
@@ -84,7 +84,7 @@
 
                                     <br/>
                                     <div class="controls">
-                                        <input id="password" class="form-control error-check" type="password" name="name" maxlength="255"></input>
+                                        <input id="password" class="form-control error-check" type="password" name="name" ng-model="loginData.password" maxlength="255"></input>
                                         <div class="help-text name"></div>
                                     </div>
                                 </div>
@@ -95,9 +95,20 @@
                                 <div class="lostpasswd">
                                     <a class="text-center">Forgot Your Password?</a>
                                 </div>
+
                                 <br />
+                              <div class="row">
+                                <div class="col-sm-8">
+                                  <div ng-show="error">
+                                    <div class="alert alert-danger animated shake" role="alert">
+                                      <span>username / password or password!</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                                 <div class="login-btn">
-                                    <button class="btn btn-coffee">
+                                    <button class="btn btn-coffee" ng-click="login()">
                                         Login
                                     </button>
                                 </div>

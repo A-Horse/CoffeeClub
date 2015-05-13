@@ -2,6 +2,7 @@ var AeroMapSetting = {
   development: true,
   port: 5000,
   host: '0.0.0.0',
+  backend: 'http://0.0.0.0:5000',
   https: false,
   https_options: {
     port: 4432
