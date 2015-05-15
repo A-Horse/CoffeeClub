@@ -34,7 +34,12 @@
         <div class="col-md-2 col-sm-4 left">
           <div class="row">
             <div class="col-sm-12">
+            <div class="p-avatar">
               <img ng-src="{{coffeer.avatar}}" class="img-circle">
+              <div class="overlay img-circle">
+                <button class="btn btn-default" ng-click="change_avatar()">change</button>
+              </div>
+            </div>
             </div>
           </div>
           <div class="row follow-part">
@@ -51,7 +56,7 @@
 
         <div class="col-md-10 col-sm-8 right">
           <class="inner">
-            <div class="edit-icon" ng-click="open()">
+            <div class="edit-icon" ng-click="edit_profile()">
               <a><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
             </div>
             <div class="top">
@@ -59,10 +64,21 @@
               <div class="coffeerName">
                 <h2>{{coffeer.username}}  <small>{{coffeer.realname}}</small></h2>
               </div>
+              <div class="coffeer_detail">
+                <p ng-show="coffeer.city">{{coffeer.city}}</p>
+                <p ng-show="coffeer.country"> <span>|</span> {{coffeer.country}}</p>
+              </div>
             </div>
             <hr style="width:97%"></hr>
             <div class="bottom">
+              <div class="self_description">
+                <p>
+                  {{coffeer.self_description}}
+                </p>
+              </div>
+              <div class="coffeer_detail">
 
+              </div>
             </div>
           </class>
         </div>
@@ -79,12 +95,53 @@
   </div>
   <div class="modal-body">
     <form>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" class="form-control" id="city">
+          </div>
+        </div>
+      </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="country">Country:</label>
+        <input type="text" class="form-control" id="country">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="self_description">Self Description:</label>
+        <textarea type="text" class="form-control" id="self_description"></textarea>
+      </div>
+    </div>
+  </div>
 
 
     </form>
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-primary" ng-click="submit()">Submit</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>
+
+
+
+<script type="text/ng-template" id="changeAvatar.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Avatar</h3>
+  </div>
+  <div class="modal-body">
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">ok</button>
     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
   </div>
 </script>

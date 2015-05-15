@@ -31,11 +31,30 @@
       margin-right: auto; }
       .profile-module .profile-main .p-splash .coffeer-detail .row .left {
         display: block; }
-        .profile-module .profile-main .p-splash .coffeer-detail .row .left .img-circle {
-          max-height: 8.125rem;
-          min-width: 8.125rem;
+        .profile-module .profile-main .p-splash .coffeer-detail .row .left .p-avatar {
+          position: relative;
           margin-top: 0.9375rem;
           margin-left: 1.25rem; }
+          .profile-module .profile-main .p-splash .coffeer-detail .row .left .p-avatar .img-circle {
+            max-height: 8.125rem;
+            min-width: 8.125rem; }
+          .profile-module .profile-main .p-splash .coffeer-detail .row .left .p-avatar .overlay {
+            display: none;
+            position: absolute;
+            top: 1%;
+            left: 1%;
+            width: 93%;
+            height: 93%;
+            background-color: rgba(80, 80, 80, 0.5); }
+            .profile-module .profile-main .p-splash .coffeer-detail .row .left .p-avatar .overlay button {
+              position: absolute;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              margin-right: -50%;
+              transform: translate(-50%, -50%); }
+        .profile-module .profile-main .p-splash .coffeer-detail .row .left .p-avatar:hover .overlay {
+          display: block; }
         .profile-module .profile-main .p-splash .coffeer-detail .row .left .follow-part {
           padding-left: 0.9375rem; }
           .profile-module .profile-main .p-splash .coffeer-detail .row .left .follow-part p {
@@ -53,5 +72,9 @@
       .profile-module .profile-main .p-splash .coffeer-detail .row .right .top .coffeerName h2 {
         font-family: ChunkFive;
         font-size: 1.25rem; }
-      .profile-module .profile-main .p-splash .coffeer-detail .row .right .bottom:before {
-        content: 'haha'; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .top .coffeer_detail p {
+        display: inline-block;
+        color: #660000; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .bottom p {
+        color: #999999;
+        font-size: 0.8125rem; }
