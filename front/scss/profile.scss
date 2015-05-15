@@ -1,0 +1,98 @@
+@import '_function';
+/****************************************/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    border: 0px none;
+    line-height: inherit;
+    vertical-align: baseline;
+}
+
+.profile-module {
+    .name-dropdown {
+        margin: {
+            right: rem-calc(10);
+        }
+    }
+    .profile-main {
+        width: 85%;
+        margin: {
+            left: auto;
+            right: auto;
+        }
+        background: {
+            color: #EEEEEE;
+        }
+        .p-splash {
+            padding: {
+                top: 7%;
+                bottom: 1%;
+            }
+            .coffeer-detail {
+                background: {
+                    color: #FFFFFF;
+                }
+                height: rem-calc(200);
+                width: 90%;
+                margin: {
+                    left: auto;
+                    right: auto;
+                }
+                .row {
+                    .left {
+                        .img-circle {
+                            max-height: rem-calc(130);
+                            min-width: rem-calc(130);
+                            margin: {
+                                top: rem-calc(15);
+                                left: rem-calc(20);
+                            }
+                        }
+                        display: block;
+                        .follow-part {
+                            padding: {
+                                left: rem-calc(15);
+                            }
+                            p {
+                                font: {
+                                    weight: bold;
+                                }
+                                margin: 0;
+                                padding: 0;
+                            }
+                        }
+                    }
+                    .right {
+                      .edit-icon {
+                        position: absolute;
+                        top: rem-calc(10);
+                        right: rem-calc(30);
+                        font: {
+                        size: rem-calc(20);
+                        }
+                        }
+                          .edit-icon:hover {
+                            color: #777777;
+                            cursor: pointer;
+                            }
+                      .top {
+                        .coffeerName {
+                          h2 {
+                            font: {
+                            family: ChunkFive;
+                            size: rem-calc(20);
+                            }
+                            }
+                          }
+                        }
+                          .bottom:before {
+
+                            content: 'haha';
+                            }
+                    }
+                }
+            }
+        }
+    }
+}

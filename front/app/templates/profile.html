@@ -1,3 +1,90 @@
-<div>
+<div class="profile-module">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <!--SEARCH INPUT -->
+    <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="button" class="btn btn-danger">Search Coffeer</button>
+    </form>
+
+    <!-- LOGIN OR REGISTER -->
+
+    <ul class="nav navbar-nav navbar-right  name-dropdown">
+      <li class="dropdown">
+        <a href="#profile" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{coffeerName}}<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">all post</a></li>
+          <li><a href="#">friends</a></li>
+
+          <li class="divider"></li>
+          <li><a href="#logout">Logout</a></li>
+</u>
+</li>
+</ul>
+
+</nav>
+
+<div class="profile-main">
+  <div class="p-splash">
+
+    <!-- DETAIL -->
+    <div class="coffeer-detail">
+      <div class="row">
+        <div class="col-md-2 col-sm-4 left">
+          <div class="row">
+            <div class="col-sm-12">
+              <img ng-src="{{coffeer.avatar}}" class="img-circle">
+            </div>
+          </div>
+          <div class="row follow-part">
+            <div class="col-sm-6">
+              <p class="text-center">{{coffeer.followers || 0}}</p>
+              <p>followers</p>
+            </div>
+            <div class="col-sm-6">
+              <p class="text-center">{{coffeer.following || 0}}</p>
+              <p>following</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-10 col-sm-8 right">
+          <class="inner">
+            <div class="edit-icon" ng-click="open()">
+              <a><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+            </div>
+            <div class="top">
+              <br />
+              <div class="coffeerName">
+                <h2>{{coffeer.username}}  <small>{{coffeer.realname}}</small></h2>
+              </div>
+            </div>
+            <hr style="width:97%"></hr>
+            <div class="bottom">
+
+            </div>
+          </class>
+        </div>
+      </div>
+    </div>
+    <!-- END DETAIL -->
+  </div>
 
 </div>
+
+<script type="text/ng-template" id="editProfile.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Edit Profile</h3>
+  </div>
+  <div class="modal-body">
+    <form>
+
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">OK</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+</script>

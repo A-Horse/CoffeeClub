@@ -1,0 +1,57 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  line-height: inherit;
+  vertical-align: baseline; }
+
+/****************************************/
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px none;
+  line-height: inherit;
+  vertical-align: baseline; }
+
+.profile-module .name-dropdown {
+  margin-right: 0.625rem; }
+.profile-module .profile-main {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEEEEE; }
+  .profile-module .profile-main .p-splash {
+    padding-top: 7%;
+    padding-bottom: 1%; }
+    .profile-module .profile-main .p-splash .coffeer-detail {
+      background-color: #FFFFFF;
+      height: 12.5rem;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .left {
+        display: block; }
+        .profile-module .profile-main .p-splash .coffeer-detail .row .left .img-circle {
+          max-height: 8.125rem;
+          min-width: 8.125rem;
+          margin-top: 0.9375rem;
+          margin-left: 1.25rem; }
+        .profile-module .profile-main .p-splash .coffeer-detail .row .left .follow-part {
+          padding-left: 0.9375rem; }
+          .profile-module .profile-main .p-splash .coffeer-detail .row .left .follow-part p {
+            font-weight: bold;
+            margin: 0;
+            padding: 0; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .edit-icon {
+        position: absolute;
+        top: 0.625rem;
+        right: 1.875rem;
+        font-size: 1.25rem; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .edit-icon:hover {
+        color: #777777;
+        cursor: pointer; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .top .coffeerName h2 {
+        font-family: ChunkFive;
+        font-size: 1.25rem; }
+      .profile-module .profile-main .p-splash .coffeer-detail .row .right .bottom:before {
+        content: 'haha'; }

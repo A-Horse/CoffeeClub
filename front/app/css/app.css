@@ -1,10 +1,55 @@
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+* {
   margin: 0px;
   padding: 0px;
   border: 0px none;
   line-height: inherit;
   vertical-align: baseline; }
 
+/* Have to set height explicity on ui-view
+
+.ui-view-container {
+    position: relative;
+    height: 65px;
+}
+
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    -moz-transorm: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5);
+}
+
+[ui-view].ng-enter-active {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
+
+[ui-view].ng-leave {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+[ui-view].ng-leave-active {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0);
+    -moz-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
+}
 /*-------splash----------- */
 .splash {
   background-image: url('/img/coffee_dash.jpg');
@@ -39,12 +84,14 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   visibility: visible; }
   .header .left {
     float: left;
-    padding-top: 1.375rem;
+    padding-top: 0.3125rem;
     padding-left: 2rem; }
-    .header .left .logo h2 {
-      font-size: 30px;
-      font-weight: bold;
-      color: #FFFFFF; }
+    .header .left .logo {
+      vertical-align: middle; }
+      .header .left .logo h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #FFFFFF; }
     .header .left .logo:hover h2 {
       color: #333333; }
   .header .right {

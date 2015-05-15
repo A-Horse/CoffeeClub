@@ -30,6 +30,11 @@ angular.module('coffee', [
           templateUrl: 'templates/articles.html',
           controller: 'ArticlesCtrl'
         })
+        .state('profile', {
+          url: '/profile',
+          templateUrl: 'templates/profile.html',
+          controller: 'ProfileCtrl'
+        })
         .state('editor', {
           url: '/editor',
           templateUrl: 'templates/editor.html',

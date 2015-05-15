@@ -1,103 +1,48 @@
-$backend: "http://10.42.0.30:8989";
-$rem-base: 16px !default;
-@function strip-unit($num) {
-    @return $num / ($num * 0 + 1);
+@import '_function';
+/* Have to set height explicity on ui-view
+
+.ui-view-container {
+    position: relative;
+    height: 65px;
 }
 
-@function convert-to-rem($value, $base-value: $rem-base) {
-    $value: strip-unit($value) / strip-unit($base-value) * 1rem;
-    @if ($value==0rem) {
-        $value: 0;
-    } // Turn 0rem into 0
-    @return $value;
+[ui-view].ng-enter,
+[ui-view].ng-leave {
+    position: absolute;
+    left: 0;
+    right: 0;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
 }
 
-@function rem-calc($values, $base-value: $rem-base) {
-    $max: length($values);
-    @if $max==1 {
-        @return convert-to-rem(nth($values, 1), $base-value);
-    }
-    $remValues: ();
-    @for $i from 1 through $max {
-        $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
-    }
-    @return $remValues;
+[ui-view].ng-enter {
+    opacity: 0;
+    -webkit-transform: scale3d(0.5, 0.5, 0.5);
+    -moz-transorm: scale3d(0.5, 0.5, 0.5);
+    transform: scale3d(0.5, 0.5, 0.5);
 }
 
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-sub,
-sup,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0px;
-    padding: 0px;
-    border: 0px none;
-    line-height: inherit;
-    vertical-align: baseline;
+[ui-view].ng-enter-active {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    -moz-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+}
+
+[ui-view].ng-leave {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+[ui-view].ng-leave-active {
+    opacity: 0;
+    -webkit-transform: translate3d(100px, 0, 0);
+    -moz-transform: translate3d(100px, 0, 0);
+    transform: translate3d(100px, 0, 0);
 }
 /*-------splash----------- */
 
@@ -146,9 +91,10 @@ video {
     visibility: visible;
     .left {
         float: left;
-        padding-top: rem-calc(22);
+        padding-top: rem-calc(5);
         padding-left: rem-calc(32);
         .logo {
+            vertical-align: middle;
             h2 {
                 font: {
                     size: 30px;
@@ -533,8 +479,8 @@ video {
     color: #777777;
 }
 
-.error-container{
-  .error {
-    color: red;
+.error-container {
+    .error {
+        color: red;
     }
-  }
+}

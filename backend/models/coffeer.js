@@ -60,7 +60,7 @@ var Coffeer = bookshelf.Model.extend({
 
     create: function(coffeerData) {
         var self = this;
-        return new Promise(function(resolve, reject) {
+      return new Promise(function(resolve, reject) {
             var password_raw = coffeerData.password;
             bcrypt.genSalt(10, function(error, salt) {
                 bcrypt.hash(password_raw, salt, function(error, password) {
