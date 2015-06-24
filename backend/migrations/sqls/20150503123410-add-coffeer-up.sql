@@ -1,5 +1,5 @@
 /* Replace with your SQL commands */
-CREATE TABLE coffeer
+CREATE TABLE "user"
 (
 id serial NOT NULL,
 username character varying(20) NOT NULL,
@@ -17,13 +17,13 @@ limit_login boolean NOT NULL DEFAULT false,
 isactive boolean NOT NULL DEFAULT false,
 created_at timestamp with time zone,
 updated_at timestamp with time zone,
-CONSTRAINT coffeer_pkey PRIMARY KEY (id),
-CONSTRAINT coffeer_email_key UNIQUE (email),
-CONSTRAINT coffeer_username_key UNIQUE (username)
+CONSTRAINT user_pkey PRIMARY KEY (id),
+CONSTRAINT user_email_key UNIQUE (email),
+CONSTRAINT user_username_key UNIQUE (username)
 )
 WITH (
 OIDS=FALSE
 );
-ALTER TABLE coffeer
+ALTER TABLE "user"
 OWNER TO coffee;
 

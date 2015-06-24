@@ -1,9 +1,9 @@
-<!doctype html>
-<html class="no-js" lang="zh">
+<!DOCTYPE HTML>
+<html lang="zh"  ng-app="coffee" manifest="coffee.appcache">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Coffee Club</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,7 +19,7 @@
 
 
     </head>
-    <body ng-app="coffee">
+    <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,21 +38,32 @@
             <div class="wnav-list">
               <ul>
                 <li>
-                  <a>Blog</a>
+                  <a href="#home">Home</a>
                 </li>
 
                 <li>
-                  <a>Shop</a>
+                  <a href="#blog">Blog</a>
                 </li>
 
                 <li>
-                  <a>Form</a>                  
+                  <a href="#shop" class="active">Shop</a>
                 </li>
 
                 <li>
-                  <a>Wiki</a>
+                  <a href="#forum">Forum</a>                  
                 </li>
 
+                <li>
+                  <a href="#wiki">Wiki</a>
+                </li>
+
+              </ul>
+            </div>
+            
+            <div class="wnav-log wnav-right coffee-nav-log">
+              <ul>
+                <li><a href="#login">Log In</a></li>
+                <li><a href="#signin">Sign In</a></li>
               </ul>
             </div>
             
@@ -61,10 +72,13 @@
         </header>
         <!-- HEADER END -->
 
-        
-          <div ui-view style="margin: 0; padding: 0;">
+        <div class="ui-view-container">
+          <div ui-view>
             
           </div>
+        </div>
+
+       
         
 
           <br />
@@ -137,9 +151,9 @@
 
         <script src="js/vendor/cola.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="bower_components/textAngular/dist/textAngular-rangy.min.js"></script>
-        <script src="bower_components/textAngular/dist/textAngular-sanitize.min.js"></script>
+
 
         <!-- <script src="js/plugins.js"></script> -->
         <script src="js/app.js"></script>
@@ -148,6 +162,14 @@
         <script src="js/directive/equals.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/controller/home.js"></script>
-
+        <script src="js/controller/shop.js"></script>
+        <script src="js/controller/blog.js"></script>
+        <script src="js/controller/wiki.js"></script>
+        <script src="js/controller/forum.js"></script>
+        <script src="js/controller/clogin.js"></script>
+        <script src="js/controller/csignin.js"></script>
+        <script src="js/controller/blogarticles.js"></script>
+        <script src="js/controller/demo.js"></script>
+        <script src="js/controller/nav.js"></script>
     </body>
 

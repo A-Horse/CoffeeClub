@@ -29,7 +29,11 @@ var AeroMapSetting = {
   redis_session: {
     host: '0.0.0.0',
     port: 6379
-  }
+  },
+  redis: {
+    host: '0.0.0.0',
+    port: 6379
+  },
 };
 
 module.exports = AeroMapSetting;

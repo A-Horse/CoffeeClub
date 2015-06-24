@@ -1,0 +1,13 @@
+
+<html>
+  <body>
+    <p><%= captcha %></p>
+
+    <form action="/api/captcha/test" method="post">
+      <input name="captcha">
+      <input type="submit" value="check">
+    </form>
+
+  </body>
+
+</html>

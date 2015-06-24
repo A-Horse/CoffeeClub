@@ -8,7 +8,8 @@ var express = require('express'),
     session = require('express-session'),
     RedisStore = require('connect-redis')(session),
     cookieParser = require('cookie-parser'),
-    captcha = require('captcha');
+    captcha = require('captcha'),
+  methodOverride = require('method-override');
 
 var app = express(),
     setting = require('./setting');
@@ -28,13 +29,14 @@ app.use(cors({
 /***********************************************
  * Configure
  ***********************************************/
+app.set('view engine', 'ejs');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(cookieParser());
-
+app.use(methodOverride());
 app.use(session({
     store: new RedisStore(setting.redis_session),
     secret: 'LoveRaspberryPi',
@@ -43,18 +45,25 @@ app.use(session({
     saveUninitialized: false
 }));
 
-app.use(express.static('../front/app'));
+//app.use(express.static('../front/app'));
 
 /****************************************************
  * Router
  ****************************************************/
 var Coffeer = require('./routes/coffeer'),
     Article = require('./routes/article'),
+    Test = require('./routes/test'),
+    Captcha = require('./routes/captcha'),
     ErrorHandler = require('./routes/error');
+app.use('/api/test', Test);
+app.use('/api/captcha', Captcha);
+app.use('/api/user', Coffeer);
+app.use('/api/article', Article);
+app.use(ErrorHandler.log);
+app.use(ErrorHandler.clientErrorHandler);
+app.use(ErrorHandler.errorHandler);
 
-app.use('/coffeer', Coffeer);
-app.use('/article', Article);
-app.use(ErrorHandler);
+
 
 
 /***********************************************
