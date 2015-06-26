@@ -1,7 +1,9 @@
 var express = require('express'),
+  _ = require('underscore'),
     router = express.Router();
 
 var logger = require('../logger'),
+  Helper = require('./helper');
     Coffeer = require("../models/coffeer");
 
 
@@ -13,12 +15,12 @@ router.get('/', function(req, res, next) {
 });
 
 /**************************************************
- * Sign in
+ * Sign up
  **************************************************/
-router.post('/', function(req, res, next) {
-    var coffeerData = req.body;
+router.post('/', Helper.checkCaptcha, function(req, res, next) {
+  var coffeerData = _.omit(req.body, 'captcha');
     Coffeer.create(coffeerData).then(function(coffeer) {
-        res.send(coffeer);
+        res.send(coffeer.omit('password'));
     }, function(error) {
         return next(error);
     });
@@ -57,7 +59,7 @@ router.post('/login', function(req, res, next) {
                     error: 'sorry, username or password error!'
                 });
             }
-            req.session.coffeer = coffeer;
+            req.session.user = coffeer;
             return res.send(coffeer);
         });
     } else if (req.body.type === '2') {
@@ -70,7 +72,7 @@ router.post('/login', function(req, res, next) {
                     error: 'sorry, email or password error!'
                 });
             }
-            req.session.coffeer = coffeer;
+            req.session.user = coffeer;
             return res.send(coffeer);
         });
     } else {
@@ -82,10 +84,17 @@ router.post('/login', function(req, res, next) {
 /**************************************************
  * User logout
  **************************************************/
-router.post('logout', function(req, res, next){
-  req.session.destory();
+router.post('/logout', function(req, res, next){
+  req.session.destroy();
   res.send({
-    logout: true
+    logout: 'succcess'
+  });
+});
+
+router.get('/logout', function(req, res, next){
+  req.session.destroy();
+  res.send({
+    logout: 'succcess'
   });
 });
 /**************************************************
@@ -93,6 +102,11 @@ router.post('logout', function(req, res, next){
  **************************************************/
 router.get('/checkusername', function(req, res, next) {
     var username = req.query.username;
+  if(!username) {
+    return res.send({
+      error: 'not give param'
+    });
+  }
     new Coffeer({
       username: username.toLowerCase().trim()
     }).fetch().then(function(coffeer) {
@@ -108,6 +122,45 @@ router.get('/checkusername', function(req, res, next) {
     }, function(error) {
       next(error);
     });
+});
+
+
+router.get('/checkemail', function(req, res, next) {
+  var email = req.query.email;
+  if(!email) {
+    return res.send({
+      error: 'not give param'
+    });
+  }
+  new Coffeer({
+    email: email.toLowerCase().trim()
+  }).fetch().then(function(coffeer) {
+    if(coffeer){
+      res.send({
+        exist: true
+      });
+    } else {
+      res.send({
+        exist: false
+      });
+    }
+  }, function(error) {
+    next(error);
+  });
+});
+
+router.get('/alive', function(req, res, next){
+  'use strict';
+
+  if(req.session.user) {
+    res.send({
+      alive: true,
+      username: req.session.user.username
+    });
+  } else {
+    res.send({alive: false});
+  }
+
 });
 
 

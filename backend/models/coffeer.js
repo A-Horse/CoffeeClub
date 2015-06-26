@@ -35,7 +35,7 @@ var bookshelf = require('../db').orm,
  *******************************************/
 
 var Coffeer = bookshelf.Model.extend({
-    tableName: 'coffeer',
+    tableName: 'user',
 
     initialize: function() {
         this.on('saving', this.validateSave);
@@ -46,7 +46,6 @@ var Coffeer = bookshelf.Model.extend({
             username: ['required'],
             password: ['required'],
             email: ['required', 'email'],
-            realname: ['required']
         }).run(this.attributes);
     },
 

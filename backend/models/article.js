@@ -2,7 +2,9 @@ var bookshelf = require('../db').orm,
     checkit = require('checkit'),
     Promise = require('bluebird');
 
-var Coffeer = require('./coffeer');
+var Coffeer = require('./coffeer'),
+  BlogComment = require('./blogcomment');
+
 
 
 /**************************************************
@@ -43,6 +45,10 @@ var Article = bookshelf.Model.extend({
 
   coffer: function(){
     return this.hasOne(Coffeer);
+  },
+
+  comments: function(){
+    return this.hasMany(BlogComment);
   },
 
   hasTimestamps: ['created_at', 'updated_at']

@@ -13,9 +13,10 @@ var ejs = require('ejs');
 router.get('/', function(req, res, next){
   'use strict';
   rclient.srandmember('Captcha', 1, function(err, result){
-
-
-    res.send(result[0]);
+    var captcha = JSON.parse(result[0]);
+    req.session.captcha = captcha.captcha;
+    logger.log('debug', 'set session.captcha = ', req.session.captcha);
+    res.send({captcha: captcha.filename});
   });
 });
 

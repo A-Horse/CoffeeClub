@@ -2,7 +2,9 @@ var express = require('express'),
     router = express.Router();
 
 var logger = require('../logger'),
+  Helper = require('./helper'),
     Coffeer = require('../models/coffeer'),
+    BlogComment = require('../models/blogcomment'),
     Article = require('../models/article');
 
 router.get('/:id', function(req, res, next) {
@@ -42,4 +44,41 @@ router.post('/', function(req, res, next) {
         });
 });
 
+router.post('/:articlesId/comment', Helper.checkLogin, function(req, res, next){
+  'use strict';
+
+  var data = {
+    article_id: req.params.articleId,
+    user_id: req.session.user.id,
+    comment: req.body.comment
+  };
+  if (req.body.for_comment_id) {
+    data.is_for = true;
+  }
+  new BlogComment(data)
+      .save(null, {
+        method: 'insert'
+      })
+      .then(function(comment){
+        res.send(comment);
+      }, function(error){
+        next(error);
+      });
+});
+
+
+router.get('/:articleId/comment', function(req, res, next){
+  'use strict';
+
+  return BlogComment.collection().fetch({
+    article_id: req.params.article_id,
+  }).then(function(comments){
+    res.send(comments);
+  }, function(error){
+    next(error);
+  });
+
+});
+
 module.exports = router;
+

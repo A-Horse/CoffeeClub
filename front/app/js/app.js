@@ -1,7 +1,8 @@
 angular.module('coffee', [
         'ui.router',
         'coffee.controllers',
-        'ngAnimate'
+        'ngAnimate',
+        'ngCookies',
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
@@ -30,6 +31,11 @@ angular.module('coffee', [
           templateUrl: 'templates/shop.html',
           controller: 'ShopCtrl'
         })
+        .state('order', {
+          url: '/order/:productId',
+          templateUrl: 'templates/order.html',
+          controller: 'OrderCtrl'
+        })
         .state('forum', {
           url: '/forum',
           templateUrl: 'templates/forum.html',
@@ -40,16 +46,42 @@ angular.module('coffee', [
           templateUrl: 'templates/wiki.html',
           controller: 'WikiCtrl'
         })
+        .state('wikiarticles', {
+          url: '/wiki/:id',
+          templateUrl: 'templates/wikiarticle.html',
+          controller: 'WikiArticleCtrl'
+        })
         .state('login', {
           url: '/login',
           templateUrl: 'templates/coffeelogin.html',
           controller: 'LogInCtrl'
         })
-        .state('signin', {
-          url: '/signin',
-          templateUrl: 'templates/coffeesignin.html',
-          controller: 'SignInCtrl'
+        .state('signup', {
+          url: '/signup',
+          templateUrl: 'templates/csignup.html',
+          controller: 'SignUpCtrl'
+        })
+        .state('404', {
+          url: '/404',
+          templateUrl: 'templates/404.html',
+        })
+        .state('building', {
+          url: '/building',
+          templateUrl: 'templates/building.html',
         });
 
         $urlRouterProvider.otherwise('/home');
+
+      // $urlRouterProvider.otherwise(function ($injector, $location) {
+      //   $injector.invoke(['$state', function ($state) {
+      //     console.log($location);
+      //     if ($location.url === '') {
+      //       $state.go('home');
+      //     } else {
+      //     $state.go('404');
+      //     }
+      //   }]);
+      //   return true;
+      // });
+
     });

@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="zh"  ng-app="coffee" manifest="coffee.appcache">
+<!-- <html lang="zh"  ng-app="coffee" manifest="coffee.appcache"> -->
+<html lang="zh"  ng-app="coffee">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -25,9 +26,9 @@
         <![endif]-->
 
         <!-- HEADER START -->
-        <header>
+        <header ng-controller="NavCtrl">
           
-          <nav class="white-nav">
+          <nav class="white-nav" >
             <div class="wnav-header">
             <div class="wnav-brand">
               <img id="coffee_logo" class="wnav-logo" src="/img/coffee_logo.png"/>
@@ -60,12 +61,43 @@
               </ul>
             </div>
             
-            <div class="wnav-log wnav-right coffee-nav-log">
+            <div class="wnav-log wnav-right coffee-nav-log" ng-show="showLogBar">
               <ul>
-                <li><a href="#login">Log In</a></li>
-                <li><a href="#signin">Sign In</a></li>
+                <li><a class="btn transparent nav-log" href="#login">Log In</a></li>
+                <li><a class="btn transparent nav-sign" href="#signup">Sign Up</a></li>
               </ul>
             </div>
+
+            <div class=" wnav-right" id="coffee-nav-user" ng-show="!showLogBar">
+              <div class="wnav-dropdown">
+                <div class="meun">
+           
+                    <a>{{username}} <i class="fa fa-angle-down"></i></a>
+                   
+               
+                </div>
+                
+                  <ul>
+                    <li>
+                      <i class="fa fa-list-alt"></i>
+                      <a href="/#building">Profile</a>
+                    </li>
+                    <li>
+                      <i class="fa fa-sign-out"></i>
+                      <a ng-click="logout()">Logout</a>
+                    </li>
+                  </ul>
+        
+              </div>
+            </div>
+
+            <!-- <div class="wnav-right wnav-dropdown2"> -->
+            <!--   <a>user</a> -->
+            <!--   <ul> -->
+            <!--     <li>sdsd</li> -->
+            <!--     <li>sdsd</li> -->
+            <!--   </ul> -->
+            <!-- </div> -->
             
           </nav>
 
@@ -149,27 +181,33 @@
 
         <!-- angular app -->
 
+        <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="js/vendor/cola.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 
 
         <!-- <script src="js/plugins.js"></script> -->
         <script src="js/app.js"></script>
-
+        <script src="js/config.js"></script>
 
         <script src="js/directive/equals.js"></script>
+        <script src="js/directive/checkUsername.js"></script>
+        <script src="js/directive/ngPin.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/controller/home.js"></script>
         <script src="js/controller/shop.js"></script>
         <script src="js/controller/blog.js"></script>
         <script src="js/controller/wiki.js"></script>
+        <script src="js/controller/wikiarticle.js"></script>
         <script src="js/controller/forum.js"></script>
         <script src="js/controller/clogin.js"></script>
-        <script src="js/controller/csignin.js"></script>
+        <script src="js/controller/signup.js"></script>
         <script src="js/controller/blogarticles.js"></script>
         <script src="js/controller/demo.js"></script>
         <script src="js/controller/nav.js"></script>
+        <script src="js/controller/order.js"></script>
     </body>
 

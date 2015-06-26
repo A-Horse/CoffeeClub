@@ -4,6 +4,7 @@ angular.module('coffee')
             restrict: 'A', // only activate on element attribute
             require: '?ngModel', // get a hold of NgModelController
             link: function(scope, elem, attrs, ngModel) {
+              'use strict';
                 if (!ngModel) return; // do nothing if no ng-model
 
                 // watch own value and re-validate on change

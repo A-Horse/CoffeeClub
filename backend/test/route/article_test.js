@@ -35,7 +35,7 @@ describe('Article Model Route Test', function(){
       request(domain)
         .get('/article/' + articleData.id)
         .end(function(error, res){
-          console.log('get', res.body)
+          console.log('get', res.body);
           assert.equal(res.status, 200);
           assert.equal(res.body.coffeer_id, articleData.coffeer_id);
           done();

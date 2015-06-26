@@ -6,7 +6,7 @@ var Coffeer = require('../../models/coffeer'),
     setting = require('../../setting');
 
 describe('Coffeer Router Test', function() {
-    var domain = setting.backend;
+    var domain = setting.backend + '/api';
 
     var coffeerData = {
         username: randomstring.generate(6),
@@ -23,7 +23,7 @@ describe('Coffeer Router Test', function() {
         it('should return 200 response', function(done) {
             console.log('debug', JSON.stringify(coffeerData));
             request(domain)
-                .post('/coffeer/')
+                .post('/user/')
                 .send(coffeerData)
                 .end(function(error, res) {
                     if (error) {
@@ -41,7 +41,7 @@ describe('Coffeer Router Test', function() {
     describe('coffeer login by username', function() {
         it('should return 200 response', function(done) {
             request(domain)
-                .post('/coffeer/login')
+                .post('/user/login')
                 .send({
                     username: coffeerData.username,
                     password: coffeerData.password,
@@ -61,7 +61,7 @@ describe('Coffeer Router Test', function() {
     describe('coffeer login by username but password invalid', function() {
         it('should return 400 response', function(done) {
             request(domain)
-                .post('/coffeer/login')
+                .post('/user/login')
                 .send({
                     username: coffeerData.username,
                     password: coffeerData.password + '1',
@@ -79,7 +79,7 @@ describe('Coffeer Router Test', function() {
     describe('coffeer login by email', function() {
         it('should return 200 response', function(done) {
             request(domain)
-                .post('/coffeer/login')
+                .post('/user/login')
                 .send({
                     email: coffeerData.email,
                     password: coffeerData.password,
@@ -99,7 +99,7 @@ describe('Coffeer Router Test', function() {
     describe('coffeer login by email but password invalid', function() {
         it('should return 400 response', function(done) {
             request(domain)
-                .post('/coffeer/login')
+                .post('/user/login')
                 .send({
                     email: coffeerData.email,
                     password: coffeerData.password + '1',
@@ -119,7 +119,7 @@ describe('Coffeer Router Test', function() {
     describe('Test Check Username Route', function() {
         it('should return true', function(done) {
             request(domain)
-                .get('/coffeer/checkusername')
+                .get('/user/checkusername')
                 .query({
                     username: coffeerData.username
                 })
@@ -136,7 +136,7 @@ describe('Coffeer Router Test', function() {
   describe('Test Check Username Route', function() {
     it('should return true', function(done) {
       request(domain)
-        .get('/coffeer/checkusername')
+        .get('/user/checkusername')
         .query({
           username: 'xxxx'
         })

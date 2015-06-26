@@ -17,12 +17,13 @@ var app = express(),
 
 /***********************************************
  * Important Note:!
- * Warning: "Corss Damin" very dangerous
+ * Warning: "Corss Damin" very dangerousf
  * Must only in develpment env
  ***********************************************/
 var cors = require('cors');
 app.use(cors({
-    credentials: true
+  credentials: true,
+  origin: 'http://10.42.0.16'
 }));
 
 
@@ -52,6 +53,8 @@ app.use(session({
  ****************************************************/
 var Coffeer = require('./routes/coffeer'),
     Article = require('./routes/article'),
+    Product = require('./routes/product'),
+    Wiki = require('./routes/wiki'),
     Test = require('./routes/test'),
     Captcha = require('./routes/captcha'),
     ErrorHandler = require('./routes/error');
@@ -59,8 +62,10 @@ app.use('/api/test', Test);
 app.use('/api/captcha', Captcha);
 app.use('/api/user', Coffeer);
 app.use('/api/article', Article);
+app.use('/api/product', Product);
+app.use('/api/wiki', Wiki);
 app.use(ErrorHandler.log);
-app.use(ErrorHandler.clientErrorHandler);
+//app.use(ErrorHandler.clientErrorHandler);
 app.use(ErrorHandler.errorHandler);
 
 
@@ -72,9 +77,9 @@ app.use(ErrorHandler.errorHandler);
  ***********************************************/
 if (setting.https) {
     https.createServer({
-        key: fs.readFileSync('cert/test/server.key'),
-        cert: fs.readFileSync('cert/test/server.crt'),
-        passphrase: '123456'
+        key: fs.readFileSync('cert/ssl.key'),
+        cert: fs.readFileSync('cert/ssl.crt'),
+        passphrase: 'minangong9'
     }, app).listen(setting.https_options.port);
 } else {
     var server = http.createServer(app);

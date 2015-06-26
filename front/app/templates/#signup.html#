@@ -1,0 +1,122 @@
+
+<div class="decoration-line"></div>
+<br />
+
+<div id="signup">
+<div class="row">
+  <div class="col-lg-5 col-lg-offset-1">
+    <div class="coffee-cirecle-splash">
+      <img src="img/logincircle.jpg"  class="circle center"/>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div id="signup-form">
+      <form name="signupForm" ng-submit="resigster()">
+
+        <div class="form-group">
+          <label for="base-form-input">Username</label>
+          <input id="username" type="text" class="form-control" name="username" placeholder="Username"
+                 ng-model="signup.username" ng-class="{'feedback-error': signupForm.username.$dirty && signupForm.username.$invalid, 'feedback-correct': 1 && signup.username}"
+                 check-username ng-minlength=3 ng-maxlength=20 required>
+          <div class="error-container red" ng-show="signupForm.username.$dirty && signupForm.username.$invalid">
+            <small class="error" ng-show="signupForm.username.$error.required">Please input a username</small>
+            <small class="error" ng-show="signupForm.username.$error.minlength">Your username is required to be at least 3 characters</small>
+            <small class="error" ng-show="signupForm.username.$error.maxlength">Your username cannot be longer than 20 characters</small>
+            <small class="error" ng-show="signupForm.username.$error.usernameExists">That username is taken, please try another</small>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="base-form-input">Password</label>
+          <input id="password" type="password" class="form-control" name="password" placeholder="Password"
+                 max-length="100" ng-model="signup.password" equals="{{password_v}}" ng-class="{'feedback-error': signupForm.password.$dirty && signupForm.password.$invalid,  'feedback-correct': 1 && signup.password}"
+                 ng-minlength=6 ng-maxlength=30 required>
+          <div class="error-container red" ng-show="signupForm.password.$dirty && signupForm.password.$invalid">
+            <small class="error" ng-show="signupForm.password.$error.required">Please input a password</small>
+            <small class="error" ng-show="signupForm.password.$error.minlength">Your username is required to be at least 6 characters</small>
+            <small class="error" ng-show="signupForm.password.$error.maxlength">Your username cannot be longer than 30 characters</small>
+            <small class="error" ng-show="signupForm.password.$error.equals">password not match</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="base-form-input">Password Verification</label>
+          <input id="password_verification" name="password_v" type="password" class="form-control" placeholder="Password Verification"
+                 ng-class="{'feedback-error': signupForm.password_v.$dirty && signupForm.password_v.$invalid, 'feedback-correct': 1 && password_v}"
+                 ng-model="password_v" equals="{{signup.password}}" ng-minlength=6 ng-maxlength=20 required>
+          <div class="error-container red" ng-show="signupForm.password_v.$dirty && signupForm.password_v.$invalid">
+            <small class="error" ng-show="signupForm.password_v.$error.required">Please input a username</small>
+            <small class="error" ng-show="signupForm.password_v.$error.minlength">Your username is required to be at least 6 characters</small>
+            <small class="error" ng-show="signupForm.password_v.$error.maxlength">Your username cannot be longer than 20 characters</small>
+            <small class="error" ng-show="signupForm.password_v.$error.equals">password not match</small>
+          </div>
+        </div>
+
+          <div class="form-group">
+          <label for="base-form-input">Email</label>
+          <input id="email" class="form-control" type="email" name="email" placeholder="Email"
+                 ng-class="{'feedback-error': signupForm.email.$dirty && signupForm.email.$invalid, 'feedback-correct': 1 && signup.email}"
+                 maxlength="255" ng-model="signup.email" ng-minlength=6 ng-maxlength=50 required>
+                <div class="error-container red" ng-show="signupForm.email.$dirty && signupForm.email.$invalid">
+                  <small class="error" ng-show="signupForm.email.$error.required">Please input a email</small>
+                  <small class="error" ng-show="signupForm.email.$error.email">Please input a valid email</small>
+                  <small class="error" ng-show="signupForm.email.$error.minlength">Your username is required to be at least 6 characters</small>
+                  <small class="error" ng-show="signupForm.email.$error.maxlength">Your username cannot be longer than 50 characters</small>
+                </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label for="base-form-input">Captcha</label>
+              <input id="captcha" type="text" name="captcha" class="form-control" autocomplete="off" placeholder="Captcha"
+                     ng-model="signup.captcha" ng-minlength=4 ng-maxlength=4 required>
+              <div class="error-container red" ng-show="signupForm.captcha.$dirty && signupForm.captcha.$invalid">
+                <small class="error" ng-show="signupForm.captcha.$error.required">Please input a captcha</small>
+                <small class="error" ng-show="signupForm.captcha.$error.minlength">Length not match</small>
+                <small class="error" ng-show="signupForm.captcha.$error.maxlength">Length not match</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+
+              <div class="form-group">
+                <label for="base-form-input"> </label>
+                <img class="captcha-img" ng-src="{{captchaUrl}}" ng-click="getCaptcha()"/>
+              </div>
+          </div>
+
+          <div class="col-lg-1">
+
+              <div class="refresh-icon">
+                <a> <i class="fa fa-refresh" id="signup-refresh-icon" ng-click="getCaptcha()"></i></a>
+              </div>
+
+          </div>
+
+        </div>
+
+
+        <div>
+          <input type="submit" class="btn transparent" value="Sign In">
+          <a class="signup-haveanccount">Have a account?</a>
+        </div>
+
+        <div class="error-container red" ng-show="signErrMsg">
+          <small class="error" ng-show="signupForm.captcha.$error.required">{{signErrMsg}}}</small>
+        </div>
+
+      </form>
+
+
+    </div>
+
+  </div>
+
+</div>
+</div>
+
+

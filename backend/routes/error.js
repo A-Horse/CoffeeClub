@@ -5,6 +5,7 @@ var express = require('express'),
 ErrorHandler = {
   log: function(err, req, res, next){
     logger.log('error', err.message);
+    logger.log('error', err.stack);
     next(err);
   },
 
@@ -18,7 +19,14 @@ ErrorHandler = {
 
   errorHandler: function(err, req, res, next){
     res.status(500);
-    res.render('../templates/error', { error: err.message, stack: err.stack });
+    //res.render('../templates/error', { error: err.message, stack: err.stack });
+    res.send({
+      error: {
+        name: err.name,
+        message: err.message,
+        code: err.code
+      }
+    });
   }
 
 };

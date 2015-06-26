@@ -36,7 +36,44 @@
   -moz-transform: translate3d(100px, 0, 0);
   transform: translate3d(100px, 0, 0); }
 
+.slide-animate-container {
+  position: relative;
+  background: white;
+  border: 1px solid black;
+  height: 40px;
+  overflow: hidden; }
+
+.slide-animate {
+  padding: 10px; }
+
+.slide-animate.ng-enter, .slide-animate.ng-leave {
+  -webkit-transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  padding: 10px; }
+
+.slide-animate.ng-enter {
+  top: -50px; }
+
+.slide-animate.ng-enter.ng-enter-active {
+  top: 0; }
+
+.slide-animate.ng-leave {
+  top: 0; }
+
+.slide-animate.ng-leave.ng-leave-active {
+  top: 50px; }
+
 /****   Nav    ****/
+#coffee-nav-user ul i {
+  left: 0;
+  display: inline; }
+
 #coffee_logo {
   height: 2rem;
   width: 2rem;
@@ -199,17 +236,27 @@
   vertical-align: middle;
   top: 10%; }
 
-/********signin********/
-#signin-form {
-  position: relative;
-  margin: 2rem auto; }
+.nav-log, .nav-sign {
+  padding: 0 0.2rem; }
 
-#signin-haveaaccount {
+/********signup********/
+#signup {
+  margin: 1.5rem auto; }
+
+#signup-form {
+  position: relative;
+  margin: auto auto; }
+
+#signup-haveaaccount {
   display: inline-block;
   position: absolute;
-  right: 0;
+  right: 10%;
   vertical-align: middle;
   top: 10%; }
+
+#signup-refresh-icon {
+  margin-top: 85%;
+  margin-left: -10%; }
 
 /*********blog *********/
 #blogs {
@@ -220,6 +267,31 @@
 
 #categories {
   padding: auto 4rem; }
+
+#article-page {
+  margin: auto 5rem; }
+
+#blog-comment textarea {
+  height: 8rem; }
+
+#recent-article {
+  margin: auto 1rem; }
+  #recent-article h1, #recent-article h2 {
+    color: #795548; }
+
+.article-content .title {
+  color: #660000;
+  font-family: KelsonSans-Bold;
+  font-size: 2.5rem; }
+.article-content .public-time {
+  font-family: Sans;
+  font-size: 80%; }
+.article-content .content {
+  letter-spacing: 1px; }
+  .article-content .content h1, .article-content .content h2, .article-content .content h3, .article-content .content h4, .article-content .content h5, .article-content .content h6 {
+    color: #333333; }
+  .article-content .content P, .article-content .content li {
+    color: #3F4853; }
 
 li.coffee-article-li {
   border-top-left-radius: 6rem !important;
@@ -236,7 +308,7 @@ li.coffee-article-li {
 
 .article-title {
   color: #3E2723;
-  font-family: Economica-Bold; }
+  font-family: Economica-Bold, HanyiQuanTang; }
 
 .article-author {
   margin: 0;
@@ -248,3 +320,91 @@ li.coffee-article-li {
   color: #555; }
 
 /********  Article   ************/
+/******** public *****************/
+.error-container {
+  margin: 0; }
+
+.captcha-img {
+  height: 34px;
+  display: block;
+  margin: 0.3rem 1rem; }
+
+.captcha-wrap {
+  position: relative;
+  height: 100%; }
+
+/***** WIKI *******/
+#wiki-main {
+  margin: 2rem 4rem; }
+
+#wiki-side-nav {
+  font-family: CANON;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 4px; }
+
+#wiki-to-edit {
+  font-weight: 700; }
+  #wiki-to-edit a.btn {
+    padding-left: 0.4rem;
+    padding-right: 0.4rem; }
+    #wiki-to-edit a.btn::after {
+      content: ' '; }
+
+#wikis-show h1.title {
+  margin-top: 0; }
+
+#wiki-article {
+  margin: 1rem 3rem; }
+
+.wiki-item .card-image {
+  position: relative; }
+.wiki-item .card-title {
+  letter-spacing: 2px;
+  color: #4E342E;
+  font-family: KelsonSans-Bold;
+  font-weight: 700; }
+.wiki-item .card-content {
+  color: #333333;
+  font-family: KelsonSans-Light; }
+.wiki-item .card-reveal {
+  display: none;
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: rgba(230, 230, 230, 0.85);
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.4s cubic-bezier(0.075, 0.585, 0.32, 1.275); }
+  .wiki-item .card-reveal > div {
+    width: 100%;
+    position: absolute;
+    top: 45%;
+    color: black;
+    font-weight: 700;
+    font-size: 150%; }
+    .wiki-item .card-reveal > div a {
+      color: #27B399; }
+      .wiki-item .card-reveal > div a:hover {
+        color: #27B399; }
+.wiki-item:hover .card-reveal {
+  display: block; }
+
+/****building*****/
+#building-text {
+  font-family: BebasNeue-Bold;
+  font-size: 150%;
+  letter-spacing: 6px;
+  color: #6D2908; }
+
+/**********Forum**********/
+#forum-table-header {
+  font-family: Economica-Bold;
+  font-size: 120%;
+  letter-spacing: 5px; }
+  #forum-table-header p {
+    margin: 0; }

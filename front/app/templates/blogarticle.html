@@ -1,0 +1,78 @@
+<div id="blog-splash" class="splash">
+  <img src="/img/blogsplash.jpg">
+  <div class="mask">
+    <h1 class="center-text">Blog</h1>
+    <p class="center-text">Petroleum and coffee had no value a few centuries ago. </p>
+  </div>
+</div>
+
+<div class="decoration-line"></div>
+
+<div id="article-page">
+<div id="article-main">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="slide-animate" ng-include="article.url"></div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="slide-animate" ng-pin container="#article-main" ng-include="'templates/widget/recent-article.html'"></div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<div id="blog-comment">
+  <div class="row">
+    <div class="col-lg-6">
+      <hr />
+      <h2 class="deep-red">LEAVE A COMMENT</h2>
+      <div ng-show="$root.userIsLogin === true">
+
+      <form ng-submit="postComment()" name="commentForm">
+
+        <div class="form-group">
+          <label for="base-form-input">Title</label>
+          <input id="commentTitle" name="title" type="text" class="form-control" placeholder="Title"
+                 ng-model="comment.title"
+                 ng-minlength=4 ng-maxlength=100 required>
+          <div class="error-container red" ng-show="commentForm.title.$dirty && commentForm.title.$invalid">
+            <small class="error" ng-show="commentForm.title.$error.required">Please input title</small>
+            <small class="error" ng-show="commentForm.title.$error.minlength">Your title is required to be at least 4 characters</small>
+            <small class="error" ng-show="commentForm.title.$error.maxlength">Your title cannot be longer than 100 characters</small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="base-form-input">Message</label>
+          <textarea id="commentMessage" name="message"  class="form-control" placeholder="Message"
+                 ng-model="comment.massage"
+                 ng-minlength=4  required></textarea>
+          <div class="error-container red" ng-show="commentForm.message.$dirty && commentForm.message.$invalid">
+            <small class="error" ng-show="commentForm.message.$error.required">Please input title</small>
+            <small class="error" ng-show="commentForm.message.$error.minlength">Your title is required to be at least 4 characters</small>
+            <small class="error" ng-show="commentForm.message.$error.maxlength">Your title cannot be longer than 100 characters</small>
+          </div>
+        </div>
+
+        <div>
+          <input type="submit" class="btn transparent" value="Submit">
+        </div>
+
+      </form>
+      </div>
+
+      <div ng-show="$root.userIsLogin === false">
+        <h3 class="pink">
+          Please <a href="/#login">Login</a> and you can leave a message.
+        </h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+</div>
