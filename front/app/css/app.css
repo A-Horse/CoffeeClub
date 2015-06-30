@@ -70,16 +70,34 @@
   top: 50px; }
 
 /****   Nav    ****/
-#coffee-nav-user ul i {
-  left: 0;
-  display: inline; }
+.nav-underline {
+  position: absolute;
+  width: 130%;
+  height: 3px;
+  background-color: #607D8B;
+  top: 70%;
+  left: -18%;
+  opacity: 0;
+  transition: opacity 0.3s ease-out; }
+
+#coffee-nav-user {
+  margin: 0; }
+  #coffee-nav-user ul i {
+    left: 0;
+    display: inline; }
+
+#coffee-rsp-nav ul li {
+  background-color: white;
+  padding: 0.8rem 0; }
+  #coffee-rsp-nav ul li a {
+    font-family: KelsonSans-Regular;
+    letter-spacing: 8px; }
 
 #coffee_logo {
   height: 2rem;
   width: 2rem;
   display: inline-block;
-  vertical-align: middle;
-  transform: translate(0, -15%); }
+  vertical-align: middle; }
 
 .wnav-logo-text {
   font-family: Canon; }
@@ -90,6 +108,23 @@
 .coffee-nav-log {
   font-family: Sans;
   font-letter-spacing: 1px; }
+
+@media (max-width: 800px) {
+  #coffee-nav-user {
+    display: none; } }
+
+#coffee-nav-hamburger {
+  top: auto;
+  display: none; }
+  #coffee-nav-hamburger .hamburger-layer {
+    transform: translate(0, -100%); }
+  @media (max-width: 920px) {
+    #coffee-nav-hamburger {
+      display: inline; } }
+
+@media (max-width: 920px) {
+  #coffee-nav-log {
+    display: none; } }
 
 /********    module     **********/
 .ui-view {
@@ -105,6 +140,18 @@
   font-family: KelsonSans-Bold;
   font-size: 2.5rem;
   letter-spacing: 10px; }
+  @media (max-width: 1200px) {
+    .splash .mask h1, .splash .mask h2, .splash .mask h3, .splash .mask h4 {
+      font-size: 1.8rem;
+      letter-spacing: 6px; } }
+  @media (max-width: 750px) {
+    .splash .mask h1, .splash .mask h2, .splash .mask h3, .splash .mask h4 {
+      font-size: 1.3rem;
+      letter-spacing: 3px; } }
+  @media (max-width: 400px) {
+    .splash .mask h1, .splash .mask h2, .splash .mask h3, .splash .mask h4 {
+      font-size: 1rem;
+      letter-spacing: 1px; } }
 .splash .mask p {
   position: relative;
   top: 30%;
@@ -114,6 +161,43 @@
   font-size: 3rem;
   font-family: BebasNeue-Book;
   font-width: 900; }
+  @media (max-width: 1200px) {
+    .splash .mask p {
+      font-size: 2rem;
+      letter-spacing: 4px; } }
+  @media (max-width: 750px) {
+    .splash .mask p {
+      font-size: 1.3rem;
+      letter-spacing: 3px; } }
+  @media (max-width: 400px) {
+    .splash .mask p {
+      font-size: 0.8rem;
+      letter-spacing: 1px; } }
+
+div.home-card .card-overlay .p-title .content {
+  font-family: BebasNeue-Bold;
+  font-size: 2rem;
+  letter-spacing: 6px; }
+  @media (max-width: 796px) {
+    div.home-card .card-overlay .p-title .content {
+      font-size: 1.5rem;
+      letter-spacing: 4px; } }
+  @media (max-width: 400px) {
+    div.home-card .card-overlay .p-title .content {
+      font-size: 1rem;
+      letter-spacing: 3px; } }
+div.home-card .card-overlay .p-title .desc {
+  font-family: BebasNeue-Regulaer;
+  font-size: 1.5rem;
+  letter-spacing: 3px; }
+  @media (max-width: 796px) {
+    div.home-card .card-overlay .p-title .desc {
+      font-size: 1rem;
+      letter-spacing: 2px; } }
+  @media (max-width: 400px) {
+    div.home-card .card-overlay .p-title .desc {
+      font-size: 0.8rem;
+      letter-spacing: 1px; } }
 
 #footer {
   padding: 2.5rem 2.5rem 1.3rem 2.5rem;
@@ -139,6 +223,12 @@
       vertical-align: middle; }
   #footer .bottom-line {
     margin-top: 4rem; }
+    @media (max-width: 952px) {
+      #footer .bottom-line {
+        margin-top: 2rem; } }
+    @media (max-width: 600px) {
+      #footer .bottom-line {
+        margin-top: 1rem; } }
 
 .p-button {
   margin-top: 2rem;
@@ -255,18 +345,31 @@
   top: 10%; }
 
 #signup-refresh-icon {
-  margin-top: 85%;
-  margin-left: -10%; }
+  margin-top: 90%; }
+  @media (max-width: 400px) {
+    #signup-refresh-icon {
+      margin-top: 150%; } }
 
 /*********blog *********/
 #blogs {
   margin: auto 2.5rem; }
+  @media (max-width: 600px) {
+    #blogs {
+      margin: auto 0.5rem; } }
 
 #articles {
   margin-right: 1rem; }
 
-#categories {
-  padding: auto 4rem; }
+#blog-categories h1, #blog-categories h2 {
+  font-family: KelsonSans-Bold;
+  padding-left: 3rem; }
+#blog-categories ul {
+  position: relative;
+  left: -20%;
+  font-family: KelsonSans-Light;
+  letter-spacing: 2px; }
+  #blog-categories ul a {
+    color: #004D40; }
 
 #article-page {
   margin: auto 5rem; }
@@ -296,6 +399,22 @@
 li.coffee-article-li {
   border-top-left-radius: 6rem !important;
   border-bottom-left-radius: 6rem !important; }
+  @media (max-width: 700px) {
+    li.coffee-article-li {
+      border-radius: 3px !important; } }
+
+.blog-hold-space {
+  display: none; }
+  @media (max-width: 992px) {
+    .blog-hold-space {
+      display: block; } }
+  @media (max-width: 500px) {
+    .blog-hold-space {
+      display: none; } }
+
+@media (max-width: 700px) {
+  .blog-hold-space2 {
+    display: none; } }
 
 .coffee-blog-circle {
   display: block;
@@ -305,15 +424,32 @@ li.coffee-article-li {
   height: 12rem;
   width: 12rem;
   margin: 0.3rem; }
+  @media (max-width: 700px) {
+    .coffee-blog-circle {
+      height: 8rem;
+      width: 8rem; } }
+  @media (max-width: 500px) {
+    .coffee-blog-circle {
+      height: 6rem;
+      width: 6rem; } }
 
 .article-title {
   color: #3E2723;
   font-family: Economica-Bold, HanyiQuanTang; }
+  @media (max-width: 992px) {
+    .article-title {
+      font-size: 1.5rem; } }
+  @media (max-width: 500px) {
+    .article-title {
+      font-size: 1rem; } }
 
 .article-author {
   margin: 0;
   font-family: BebasNeue-Thin;
   letter-spacing: 3px; }
+  @media (max-width: 500px) {
+    .article-author {
+      font-size: 90%; } }
 
 .article-preview {
   margin: 1rem 1.5rem;
@@ -336,6 +472,9 @@ li.coffee-article-li {
 /***** WIKI *******/
 #wiki-main {
   margin: 2rem 4rem; }
+  @media (max-width: 600px) {
+    #wiki-main {
+      margin: 2rem 1rem; } }
 
 #wiki-side-nav {
   font-family: CANON;
@@ -407,4 +546,5 @@ li.coffee-article-li {
   font-size: 120%;
   letter-spacing: 5px; }
   #forum-table-header p {
-    margin: 0; }
+    margin: 0;
+    color: #3E2723; }

@@ -22,166 +22,223 @@ var watch = require('gulp-watch');
 var livereload = require('gulp-livereload');
 var connect = require('gulp-connect');
 var plumber = require('gulp-plumber');
-
+var concat = require('gulp-concat');
+var htmlreplace = require('gulp-html-replace');
+var concatCss = require('gulp-concat-css');
+var uglify = require('gulp-uglify');
+var minifyCss = require('gulp-minify-css');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
+var useref = require('gulp-useref');
+var gulpif = require('gulp-if');
+var inject = require('gulp-inject');
+var manifest = require('gulp-manifest');
 // ---------------------------------------------------------------------
 // | Helper tasks                                                      |
 // ---------------------------------------------------------------------
 
-gulp.task('archive:create_archive_dir', function () {
-    fs.mkdirSync(path.resolve(dirs.archive), '0755');
-});
-
-gulp.task('archive:zip', function (done) {
-
-    var archiveName = path.resolve(dirs.archive, pkg.name + '_v' + pkg.version + '.zip');
-    var archiver = require('archiver')('zip');
-    var files = require('glob').sync('**/*.*', {
-        'cwd': dirs.dist,
-        'dot': true // include hidden files
-    });
-    var output = fs.createWriteStream(archiveName);
-
-    archiver.on('error', function (error) {
-        done();
-        throw error;
-    });
-
-    output.on('close', done);
-
-    files.forEach(function (file) {
-
-        var filePath = path.resolve(dirs.dist, file);
-
-        // `archiver.bulk` does not maintain the file
-        // permissions, so we need to add files individually
-        archiver.append(fs.createReadStream(filePath), {
-            'name': file,
-            'mode': fs.statSync(filePath)
-        });
-
-    });
-
-    archiver.pipe(output);
-    archiver.finalize();
-
-});
-
-gulp.task('clean', function (done) {
-    require('del')([
-        dirs.archive,
-        dirs.dist
-    ], done);
-});
-
-gulp.task('copy', [
-    'copy:.htaccess',
-    'copy:index.html',
-    'copy:jquery',
-    'copy:license',
-    'copy:main.css',
-    'copy:misc',
-    'copy:normalize'
-]);
-
-gulp.task('copy:.htaccess', function () {
-    return gulp.src('node_modules/apache-server-configs/dist/.htaccess')
-               .pipe(plugins.replace(/# ErrorDocument/g, 'ErrorDocument'))
-               .pipe(gulp.dest(dirs.dist));
-});
-
-gulp.task('copy:index.html', function () {
-    return gulp.src(dirs.src + '/index.html')
-               .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
-               .pipe(gulp.dest(dirs.dist));
-});
-
-gulp.task('copy:jquery', function () {
-    return gulp.src(['node_modules/jquery/dist/jquery.min.js'])
-               .pipe(plugins.rename('jquery-' + pkg.devDependencies.jquery + '.min.js'))
-               .pipe(gulp.dest(dirs.dist + '/js/vendor'));
-});
-
-gulp.task('copy:license', function () {
-    return gulp.src('LICENSE.txt')
-               .pipe(gulp.dest(dirs.dist));
-});
-
-gulp.task('copy:main.css', function () {
-
-    var banner = '/*! HTML5 Boilerplate v' + pkg.version +
-                    ' | ' + pkg.license.type + ' License' +
-                    ' | ' + pkg.homepage + ' */\n\n';
-
-    return gulp.src(dirs.src + '/css/main.css')
-               .pipe(plugins.header(banner))
-               .pipe(plugins.autoprefixer({
-                   browsers: ['last 2 versions', 'ie >= 8', '> 1%'],
-                   cascade: false
-               }))
-               .pipe(gulp.dest(dirs.dist + '/css'));
-});
-
-gulp.task('copy:misc', function () {
-    return gulp.src([
-
-        // Copy all files
-        dirs.src + '/**/*',
-
-        // Exclude the following files
-        // (other tasks will handle the copying of these files)
-        '!' + dirs.src + '/css/main.css',
-        '!' + dirs.src + '/index.html'
-
-    ], {
-
-        // Include hidden files by default
-        dot: true
-
-    }).pipe(gulp.dest(dirs.dist));
-});
-
-gulp.task('copy:normalize', function () {
-    return gulp.src('node_modules/normalize.css/normalize.css')
-               .pipe(gulp.dest(dirs.dist + '/css'));
-});
-
-gulp.task('lint:js', function () {
-    return gulp.src([
-        'gulpfile.js',
-        dirs.src + '/js/*.js',
-        dirs.test + '/*.js'
-    ]).pipe(plugins.jscs())
-      .pipe(plugins.jshint())
-      .pipe(plugins.jshint.reporter('jshint-stylish'))
-      .pipe(plugins.jshint.reporter('fail'));
-});
-
-
-// ---------------------------------------------------------------------
-// | Main tasks                                                        |
-// ---------------------------------------------------------------------
-
-gulp.task('archive', function (done) {
-    runSequence(
-        'build',
-        'archive:create_archive_dir',
-        'archive:zip',
-    done);
-});
-
-gulp.task('build', function (done) {
-    runSequence(
-        ['clean', 'lint:js'],
-        'copy',
-    done);
-});
-
-//gulp.task('default', ['build']);
 
 
 // ---------------------------------------------------------------------
 // | My Part                                                        |
 // ---------------------------------------------------------------------
+
+gulp.task('manifest', function(){
+  gulp.src([
+    'dist/**/*',
+  ])
+    .pipe(manifest({
+      hash: true,
+      preferOnline: true,
+      exclude: [
+        'dist/templates',
+        'dist/font',
+        'dist/**/#*',
+        'api',
+        'app.appache'
+      ],
+      network: ['https://*'],
+      filename: 'app.appcache',
+    }))
+    .pipe(gulp.dest('dist/'));
+});
+
+
+gulp.task('useref', function () {
+  var assets = useref.assets();
+
+  return gulp.src('app/index.html')
+    .pipe(assets)
+    .pipe(gulpif('*.js', uglify({
+      mangle: false
+    })))
+    .pipe(gulpif('*.css', minifyCss()))
+    .pipe(assets.restore())
+    .pipe(useref())
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean', function(done){
+  require('del')([
+    dirs.dist
+  ], done);
+});
+
+gulp.task('copy', [
+  'copy:fontawesome',
+  'copy:templates',
+  'copy:plugins',
+  'copy:font',
+  'copy:misc',
+]);
+
+gulp.task('copy:plugins', function(){
+  return gulp.src(['app/js/plugins.js'])
+    .pipe(gulp.dest(dirs.dist + '/js/'));
+});
+
+
+
+gulp.task('copy:fontawesome', function(){
+  return gulp.src(['app/font-awesome-4.3.0/**/*'])
+    .pipe(gulp.dest(dirs.dist + '/font-awesome-4.3.0'));
+});
+
+gulp.task('copy:font', function(){
+  return gulp.src(['app/font/**/*'])
+    .pipe(gulp.dest(dirs.dist + '/font'));
+});
+
+
+gulp.task('copy:bower', function () {
+  return gulp.src(['app/bower_components/**/*'])
+    .pipe(gulp.dest(dirs.dist + '/bower_components'));
+});
+
+gulp.task('copy:templates', function () {
+  return gulp.src(['app/templates/**/*'])
+    .pipe(gulp.dest(dirs.dist + '/templates'));
+});
+
+gulp.task('copy:misc', function () {
+  return gulp.src([
+
+    // Copy all files
+    dirs.src + '/**/*',
+
+    // Exclude the following files
+    // (other tasks will handle the copying of these files)
+    '!' + 'app' + '/css/**/*',
+    '!' + 'app' + '/js/**/*',
+    '!' + 'app' + '/templates/**/*',
+    '!' + 'app' + '/img/**/*',
+    '!' + 'app' + '/font/**/*',
+    '!' + 'app' + '/font-awesome-4.3.0/**/*',
+    '!' + 'app' + '/bower_components/**/*',
+    '!' + 'app' + '/bower_components',
+    '!' + 'app' + '/index.html'
+
+  ], {
+
+    // Include hidden files by default
+    dot: false
+
+  }).pipe(gulp.dest(dirs.dist));
+});
+
+//compress image
+gulp.task('compress:img', function () {
+  return gulp.src('app/img/**/*')
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('compress:icon', function () {
+  return gulp.src(['app/*.png', 'app/*.ico'])
+    .pipe(imagemin({
+      progressive: true,
+      svgoPlugins: [{removeViewBox: false}],
+      use: [pngquant()]
+    }))
+    .pipe(gulp.dest('dist/'));
+});
+
+//compress
+gulp.task('compress:js', function() {
+  return gulp.src('dist/js/*.js')
+    .pipe(uglify({mangle: false}))
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('compress:css', function() {
+  return gulp.src('dist/css/*.css')
+    .pipe(minifyCss({compatibility: 'ie8'}))
+    .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('compress:cola', function() {
+  return gulp.src('app/js/vendor/cola.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('concat:js', function(){
+  return gulp.src([
+      'app/js/app.js',
+      'app/js/config.js',
+      'app/js/directive/equals.js',
+      'app/js/directive/checkUsername.js',
+      'app/js/directive/ngPin.js',
+      'app/js/controllers.js',
+      'app/js/controller/home.js',
+      'app/js/controller/shop.js',
+      'app/js/controller/blog.js',
+      'app/js/controller/wiki.js',
+      'app/js/controller/wikiarticle.js',
+      'app/js/controller/forum.js',
+      'app/js/controller/clogin.js',
+      'app/js/controller/signup.js',
+      'app/js/controller/blogarticles.js',
+      'app/js/controller/demo.js',
+      'app/js/controller/nav.js',
+      'app/js/controller/order.js'
+  ])
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest('dist/js/'));
+});
+
+
+
+gulp.task('concat:css', function(){
+  return gulp.src([
+      'app/css/vendor/cola.css',
+      'app/css/vendor/fonts.css',
+      'app/css/app.css'
+  ])
+    .pipe(concat('main.css'))
+    .pipe(gulp.dest('dist/css/'));
+});
+//relpace
+
+gulp.task('replace', function() {
+  gulp.src('app/index.html')
+    .pipe(htmlreplace({
+      'css': 'css/main.css',
+      'js': ['js/plugins.js', 'js/main.js']
+    }))
+    .pipe(gulp.dest('dist/'));
+});
+
+
+gulp.task('inject', function () {
+  gulp.src('dist/index.html')
+    .pipe(inject(gulp.src('dist/js/plugins.js', {read: false}), {relative: true}))
+    .pipe(gulp.dest('dist'));
+});
 
 //Sass part
 //
@@ -282,3 +339,19 @@ gulp.task('serve',
            'watch:bootstrap',
            'watch:app'
           ]);
+
+
+gulp.task('build',function(done){
+  runSequence(
+    'clean',
+    'sass:bootstrap',
+    'sass:foundation',
+    'sass:app',
+    'useref',
+    'copy',
+    'compress:img',
+    'inject',
+    //'manifest',
+    done);
+});
+

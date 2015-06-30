@@ -5,7 +5,7 @@
 
 <div class="row">
 
-  <div class="col-lg-5 col-lg-offset-1">
+  <div class="col-md-5 col-sm-6 col-md-offset-1 hidden-xs">
 
     <div class="coffee-cirecle-splash">
       <img src="img/signincircle.jpg"  class="circle center"/>
@@ -15,7 +15,7 @@
 
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-md-4 col-sm-5 col-xs-8 col-xs-offset-2 col-sm-offset-0">
 
     <div id="login-form">
 
@@ -45,7 +45,7 @@
         </div>
 
         <div style="position: relative;">
-          <input type="submit" class="btn transparent" value="Login"> <a id="login-haveaaccount">Have't' an account?</a>
+          <input type="submit" class="btn transparent" ng-click="loginToCoffee()" ng-tap="loginToCoffee()"  value="Login"> <a href="/#signup" id="login-haveaaccount">Have't' an account?</a>
         </div>
 
       </form>

@@ -1,22 +1,26 @@
 <!DOCTYPE HTML>
-<!-- <html lang="zh"  ng-app="coffee" manifest="coffee.appcache"> -->
 <html lang="zh"  ng-app="coffee">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Coffee Club</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0" name="viewport" />
+        <meta content="yes" name="apple-mobile-web-app-capable" />
+        <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+        <meta content="telephone=no" name="format-detection" />
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
 
+        <!-- build:css css/main.css -->
         <link rel="stylesheet" href="css/vendor/cola.css">
-        <link rel="stylesheet" href="/font-awesome-4.3.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/vendor/fonts.css">
         <link rel="stylesheet" href="css/app.css">
+        <!-- endbuild -->
+        <link rel="stylesheet" href="/font-awesome-4.3.0/css/font-awesome.min.css">
+        <!-- build:css js/vendor/modernizr.js -->
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-
+        <!-- endbuild -->
 
 
     </head>
@@ -38,30 +42,44 @@
             
             <div class="wnav-list">
               <ul>
-                <li>
+                <li id="nav-home">
                   <a href="#home">Home</a>
+                  <span class="nav-underline"></span>
                 </li>
 
-                <li>
+                <li id="nav-blog">
                   <a href="#blog">Blog</a>
+                  <span class="nav-underline"></span>
                 </li>
 
-                <li>
-                  <a href="#shop" class="active">Shop</a>
+                <li id="nav-shop">
+                  <a href="#shop">Shop</a>
+                  <span class="nav-underline"></span>
                 </li>
 
-                <li>
-                  <a href="#forum">Forum</a>                  
+                <li id="nav-forum">
+                  <a href="#forum">Forum</a>                
+                  <span class="nav-underline"></span>
                 </li>
 
-                <li>
+                <li id="nav-wiki">
                   <a href="#wiki">Wiki</a>
+                  <span class="nav-underline"></span>
                 </li>
 
               </ul>
+
+            </div>
+           
+
+
+            <div class="wnav-right" >
+              <a class="hamburger-icon" id="coffee-nav-hamburger" nav-hamburger data-target="#coffee-rsp-nav">
+                <span class="hamburger-layer"></span>
+              </a>
             </div>
             
-            <div class="wnav-log wnav-right coffee-nav-log" ng-show="showLogBar">
+            <div class="wnav-log wnav-right coffee-nav-log" ng-show="showLogBar" id="coffee-nav-log">
               <ul>
                 <li><a class="btn transparent nav-log" href="#login">Log In</a></li>
                 <li><a class="btn transparent nav-sign" href="#signup">Sign Up</a></li>
@@ -91,6 +109,7 @@
               </div>
             </div>
 
+           
             <!-- <div class="wnav-right wnav-dropdown2"> -->
             <!--   <a>user</a> -->
             <!--   <ul> -->
@@ -100,9 +119,21 @@
             <!-- </div> -->
             
           </nav>
-
+          <div id="coffee-rsp-nav" class="nav-hamburger-list">
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#wiki">Wiki</a></li>
+              <li><a href="#shop">Shop</a></li>
+              <li ng-show="!showLogBar"><a href="#profile"> <i class="fa fa-list-alt"></i>Profile</a></li>
+              <li ng-show="!showLogBar"><a  ng-click="logout()"> <i class="fa fa-sign-out"></i>Logout</a></li>
+              <li ng-show="showLogBar"><a href="#login"><i class="fa fa-sign-in"></i>Login</a></li>
+              <li ng-show="showLogBar"><a href="#signup"><i class="fa fa-user-plus"></i>Sign Up</a></li>
+            </ul>
+          </div>
         </header>
         <!-- HEADER END -->
+      
 
         <div class="ui-view-container">
           <div ui-view>
@@ -117,7 +148,7 @@
           
         <footer class="big-footer" id="footer">
          <div class="row">
-           <div class="col-lg-3">
+           <div class="col-md-2 visible-lg-block visible-md-block">
              <ul id="footer-nav-list" class="list" id="footer-left-list">
                <li><a href="">Blog</a></li>
                <li><a href="">Shop</a></li>
@@ -126,11 +157,12 @@
              </ul>
            </div>
            
-           <div class="col-lg-4">
-                        
+           <div class="col-md-5 visible-lg-block visible-md-block">
+             <h3> About the founder:</h3>
+             <p>             The founder of a love life, love coffee young people, like you, like, welcome to the Coffee Club, I wish you happy.</p>
            </div>
 
-           <div class="col-lg-2">
+           <div class="col-md-2 visible-lg-block visible-md-block">
              <h5>Follow us</h5>
              <ul class="list follow-list">
                <li><span><i class="fa fa-github"></i></span>
@@ -156,7 +188,7 @@
              </ul>
            </div>
 
-           <div class="col-lg-3 sub-new">
+           <div class="col-md-3 col-xs-12 sub-new">
              <h5>SUBSCRIBE TO OUR NEWS</h5>
              <p>Sign up for our newsletter and get the latest news.</p>
              <div class="form-group">
@@ -181,21 +213,31 @@
 
         <!-- angular app -->
 
-        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- build:js js/vendor/lib.js -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/fastclick/lib/fastclick.js"></script>
         <script src="js/vendor/cola.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.js"></script>
-        <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <!-- endbuild -->
+        
+
+        
+        <!-- inject:js -->
+        <!-- endinject -->
 
 
-        <!-- <script src="js/plugins.js"></script> -->
+        <!-- build:js js/main.js -->
         <script src="js/app.js"></script>
         <script src="js/config.js"></script>
-
         <script src="js/directive/equals.js"></script>
         <script src="js/directive/checkUsername.js"></script>
         <script src="js/directive/ngPin.js"></script>
+        <script src="js/directive/hamburger.js"></script>
+        <script src="js/directive/navUnderline.js"></script>
         <script src="js/controllers.js"></script>
         <script src="js/controller/home.js"></script>
         <script src="js/controller/shop.js"></script>
@@ -209,5 +251,6 @@
         <script src="js/controller/demo.js"></script>
         <script src="js/controller/nav.js"></script>
         <script src="js/controller/order.js"></script>
+        <!-- endbuild -->
     </body>
 

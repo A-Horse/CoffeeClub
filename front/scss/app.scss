@@ -86,6 +86,16 @@
     top: 50px;
 }
 /****   Nav    ****/
+.nav-underline {
+  position: absolute;
+  width: 130%;
+  height: 3px;
+  background-color: #607D8B;
+  top: 70%;
+  left: -18%;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
 
 #coffee-nav-user {
     ul {
@@ -94,14 +104,27 @@
             display: inline;
         }
     }
+      margin: 0;
 }
 
+#coffee-rsp-nav {
+    ul li {
+        background-color: white;
+        padding: 0.8rem 0;
+        a {
+            font: {
+                family: KelsonSans-Regular;
+            }
+            letter-spacing: 8px;
+            }
+
+    }
+}
 #coffee_logo {
     height: 2rem;
     width: 2rem;
     display: inline-block;
     vertical-align: middle;
-    transform: translate(0, -15%);
 }
 
 .wnav-logo-text {
@@ -117,7 +140,33 @@
         family: Sans;
         letter-spacing: 1px;
     }
+   
 }
+
+#coffee-nav-user {
+   @media(max-width: 800px){
+        display: none;
+        }
+}
+
+#coffee-nav-hamburger {
+  top: auto;
+  display: none;
+  .hamburger-layer {
+    transform: translate(0, -100%);
+    }
+      @media (max-width: 920px) {
+         display: inline;
+        }
+}
+
+#coffee-nav-log {
+    @media (max-width: 920px) {
+         display: none;
+        }
+} 
+
+
 /********    module     **********/
 
 .ui-view {
@@ -136,6 +185,19 @@
             font-family: KelsonSans-Bold;
             font-size: 2.5rem;
             letter-spacing: 10px;
+
+            @media (max-width: 1200px) {
+               font-size: 1.8rem;
+               letter-spacing: 6px;
+              }
+                @media (max-width: 750px) {
+               font-size: 1.3rem;
+               letter-spacing: 3px;
+              }
+      @media (max-width: 400px) {
+               font-size: 1rem;
+               letter-spacing: 1px;
+              }
         }
         p {
             position: relative;
@@ -148,9 +210,59 @@
                 family: BebasNeue-Book;
                 width: 900;
             }
+              @media (max-width: 1200px) {
+               font-size: 2rem;
+               letter-spacing: 4px;
+              }
+
+                 @media (max-width: 750px) {
+               font-size: 1.3rem;
+               letter-spacing: 3px;
+              }
+                @media (max-width: 400px) {
+               font-size: 0.8rem;
+               letter-spacing: 1px;
+              }
         }
     }
 }
+div.home-card {
+    .card-overlay {
+        .p-title {
+            .content {
+                font: {
+                    family: BebasNeue-Bold;
+                    size: 2rem;
+                }
+                letter-spacing: 6px;
+                @media (max-width: 796px) {
+                    font-size: 1.5rem;
+                    letter-spacing: 4px;
+                }
+                @media (max-width: 400px) {
+                    font-size: 1rem;
+                    letter-spacing: 3px;
+                }
+            }
+            .desc {
+                font: {
+                    family: BebasNeue-Regulaer;
+                    size: 1.5rem;
+                }
+                letter-spacing: 3px;
+                @media (max-width: 796px) {
+                    font-size: 1rem;
+                    letter-spacing: 2px;
+                }
+                @media (max-width: 400px) {
+                    font-size: 0.8rem;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+}
+
 
 $footer-bg: lighten(#6D2908, 8%);
 $footer-color: #E0E4CC;
@@ -187,6 +299,12 @@ $footer-color: #E0E4CC;
     }
     .bottom-line {
         margin-top: 4rem;
+        @media (max-width: 952px){
+          margin-top: 2rem;
+          }
+    @media (max-width: 600px){
+          margin-top: 1rem;
+          }
     }
 }
 
@@ -343,21 +461,40 @@ $footer-color: #E0E4CC;
 }
 
 #signup-refresh-icon {
-    margin-top: 85%;
-    margin-left: -10%;
+    margin-top: 90%;
+    @media(max-width: 400px) {
+      margin-top: 150%;
+      }
+
 }
 /*********blog *********/
 
 #blogs {
     margin: auto 2.5rem;
+    @media(max-width: 600px) {
+      margin: auto 0.5rem;
+      }
 }
 
 #articles {
     margin-right: 1rem;
 }
 
-#categories {
-    padding: auto 4rem;
+#blog-categories {
+  
+    h1,h2 {
+      font-family: KelsonSans-Bold;
+      padding-left: 3rem;
+      }
+    ul {
+      position: relative;
+      left: -20%;
+      font-family: KelsonSans-Light;
+      letter-spacing: 2px;
+      a {
+        color: #004D40;
+        }
+      }
 }
 
 #article-page {
@@ -408,6 +545,28 @@ li.coffee-article-li {
         top-left-radius: 6rem !important;
         bottom-left-radius: 6rem !important;
     }
+
+      @media(max-width: 700px){
+        border-radius: 3px !important;
+        }
+      
+}
+
+.blog-hold-space {
+  display: none;
+  @media (max-width: 992px) {
+    display: block;
+    }
+  @media (max-width: 500px) {
+    display: none;
+    }
+}
+
+.blog-hold-space2 {
+
+  @media (max-width: 700px) {
+    display: none;
+    }
 }
 
 .coffee-blog-circle {
@@ -418,12 +577,30 @@ li.coffee-article-li {
     height: 12rem;
     width: 12rem;
     margin: 0.3rem;
+
+    
+      @media(max-width: 700px){
+        height: 8rem;
+        width: 8rem;
+        }
+
+            
+      @media(max-width: 500px){
+        height: 6rem;
+        width: 6rem;
+        }
 }
 
 .article-title {
     color: #3E2723;
     font: {
         family: Economica-Bold, HanyiQuanTang;
+    }
+    @media (max-width: 992px) {
+    font-size: 1.5rem;
+    }
+ @media (max-width: 500px) {
+    font-size: 1rem;
     }
 }
 
@@ -433,6 +610,9 @@ li.coffee-article-li {
         family: BebasNeue-Thin;
     }
     letter-spacing: 3px;
+    @media (max-width: 500px) {
+      font-size: 90%;
+    }
 }
 
 .article-preview {
@@ -460,6 +640,10 @@ li.coffee-article-li {
 
 #wiki-main {
     margin: 2rem 4rem;
+    
+    @media(max-width: 600px) {
+      margin: 2rem 1rem;
+      }
 }
 
 #wiki-side-nav {
@@ -558,8 +742,10 @@ li.coffee-article-li {
 
 /**********Forum**********/
 #forum-table-header {
+  
   p{
     margin: 0;
+color: #3E2723;
     }
   font: {
   family: Economica-Bold;

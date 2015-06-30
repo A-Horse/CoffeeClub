@@ -64,7 +64,7 @@ angular.module('coffee').
     
            } else if (scrollY >= to) {
              $this.css({
-               left: "",
+               left: '',
                top: to - data.parentTop + data.pad.top
              }).css("position", "absolute");
       

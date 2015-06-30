@@ -11,11 +11,11 @@
 <div id="article-page">
 <div id="article-main">
   <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-xs-12">
       <div class="slide-animate" ng-include="article.url"></div>
     </div>
 
-    <div class="col-lg-3">
+    <div class="col-lg-3 visible-lg-block">
       <div class="slide-animate" ng-pin container="#article-main" ng-include="'templates/widget/recent-article.html'"></div>
     </div>
 
@@ -52,8 +52,8 @@
                  ng-minlength=4  required></textarea>
           <div class="error-container red" ng-show="commentForm.message.$dirty && commentForm.message.$invalid">
             <small class="error" ng-show="commentForm.message.$error.required">Please input title</small>
-            <small class="error" ng-show="commentForm.message.$error.minlength">Your title is required to be at least 4 characters</small>
-            <small class="error" ng-show="commentForm.message.$error.maxlength">Your title cannot be longer than 100 characters</small>
+            <small class="error" ng-show="commentForm.message.$error.minlength">Your message is required to be at least 4 characters</small>
+            <small class="error" ng-show="commentForm.message.$error.maxlength">Your message cannot be longer than 100 characters</small>
           </div>
         </div>
 

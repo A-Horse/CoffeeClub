@@ -57,6 +57,13 @@ angular.module('coffee.controllers')
         });
       };
 
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+        if($.inArray(toState.name, ['home', 'wiki', 'shop', 'blog', 'forum']) > -1 ){
+
+          angular.element('.wnav-list li span').css('opacity', '0');
+          angular.element('#nav-' + toState.name + ' span').css('opacity', '1');
+        }
+      });
 
 
       //404 handler
@@ -75,10 +82,10 @@ angular.module('coffee.controllers')
       //                  console.log(unfoundState.options); // {inherit:false} + default options
       //                });
 
-      $rootScope.$on('$stateChangeError',
-                     function(event, toState, toParams, fromState, fromParams, error){
-                       console.log('state change error');
-                     });
+      // $rootScope.$on('$stateChangeError',
+      //                function(event, toState, toParams, fromState, fromParams, error){
+      //                  console.log('state change error');
+      //                });
       // $rootScope.$on('$stateChangeStart',
       //                function(event, toState, toParams, fromState, fromParams){
       //                  event.preventDefault();

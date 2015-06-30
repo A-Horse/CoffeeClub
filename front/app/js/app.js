@@ -2,11 +2,13 @@ angular.module('coffee', [
         'ui.router',
         'coffee.controllers',
         'ngAnimate',
+        //'textAngular',
         'ngCookies',
+        'ngTouch',
     ])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
-            .state('dash', {
+        .state('home', {
                 url: '/home',
                 templateUrl: 'templates/home.html',
                 controller: 'HomeCtrl'
@@ -40,6 +42,11 @@ angular.module('coffee', [
           url: '/forum',
           templateUrl: 'templates/forum.html',
           controller: 'ForumCtrl'
+        })
+        .state('forumNew', {
+          url: '/forum/new',
+          templateUrl: 'templates/newPost.html',
+          controller: 'NewPostCtrl'
         })
         .state('wiki', {
           url: '/wiki',

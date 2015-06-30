@@ -4,13 +4,13 @@
 
 <div id="signup">
 <div class="row">
-  <div class="col-lg-5 col-lg-offset-1">
+  <div class="col-md-5 col-sm-6 col-md-offset-1 hidden-xs">
     <div class="coffee-cirecle-splash">
       <img src="img/logincircle.jpg"  class="circle center"/>
     </div>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-md-4 col-sm-5 col-xs-8 col-xs-offset-2 col-sm-offset-0">
     <div id="signup-form">
       <form name="signupForm" ng-submit="resigster()">
 
@@ -68,7 +68,7 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-4">
+          <div class="col-xs-4">
             <div class="form-group">
               <label for="base-form-input">Captcha</label>
               <input id="captcha" type="text" name="captcha" class="form-control" autocomplete="off" placeholder="Captcha"
@@ -81,7 +81,7 @@
             </div>
           </div>
 
-          <div class="col-lg-4">
+          <div class="col-xs-7 col-sm-4">
 
               <div class="form-group">
                 <label for="base-form-input"> </label>
@@ -89,7 +89,7 @@
               </div>
           </div>
 
-          <div class="col-lg-1">
+          <div class="col-xs-1">
 
               <div class="refresh-icon">
                 <a> <i class="fa fa-refresh" id="signup-refresh-icon" ng-click="getCaptcha()"></i></a>
@@ -102,7 +102,7 @@
 
         <div>
           <input type="submit" class="btn transparent" value="Sign In">
-          <a class="signup-haveanccount">Have a account?</a>
+          <a href="#login" class="signup-haveanccount">Have a account?</a>
         </div>
 
         <div class="error-container red" ng-show="signErrMsg">

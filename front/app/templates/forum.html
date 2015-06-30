@@ -6,27 +6,77 @@
   </div>
 </div>
 
-<br />
-<br />
+
 
 <div class="row">
-  <div class="col-sm-10 col-center">
+  <div class="col-md-10 col-sm-11 col-xs-12 col-center">
 
-    <div id="forum-header">
-      <a class="btn transparent">New Topics</a>
-    </div>
+
     <br />
     <hr />
     <div class="row center-text" id="forum-table-header">
-      <div class="col-lg-5"><p>Topics</p></div>
-      <div class="col-lg-2"><p>Author</p></div>
-      <div class="col-lg-2"><p>Comments</p></div>
-      <div class="col-lg-3"><p>Last Post</p></div>
+      <div class="col-sm-5"><p>Topics</p></div>
+      <div class="col-sm-2"><p>Author</p></div>
+      <div class="col-sm-2"><p>Comments</p></div>
+      <div class="col-sm-3"><p>Last Post</p></div>
     </div>
 
     <hr>
 
+    <br />
+    <br />
+    <div>
+      <a class="btn transparent" ng-click="showpostedit = true">New Topics</a>
+    </div>
 
+
+    <br />
+    <br />
+
+    <div ng-show="showpostedit">
+
+      <form name="postForm" ng-submit="newpost()">
+
+        <div class="row">
+          <div class="col-sm-8">
+
+             <div class="form-group">
+          <label for="base-form-input">Title</label>
+          <input id="commentTitle" name="title" type="text" class="form-control" placeholder="Title"
+                 ng-model="comment.title"
+                 ng-minlength=4 ng-maxlength=100 required>
+          <div class="error-container red" ng-show="commentForm.title.$dirty && commentForm.title.$invalid">
+            <small class="error" ng-show="postForm.title.$error.required">Please input title</small>
+            <small class="error" ng-show="postForm.title.$error.minlength">Your title is required to be at least 4 characters</small>
+            <small class="error" ng-show="postForm.title.$error.maxlength">Your title cannot be longer than 100 characters</small>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="base-form-input">Content</label>
+          <textarea id="commentMessage" name="message"  class="form-control" placeholder="Message"
+                    ng-model="comment.massage"
+                    ng-minlength=4  required style="height:8rem;"></textarea>
+          <div class="error-container red" ng-show="commentForm.message.$dirty && commentForm.message.$invalid">
+            <small class="error" ng-show="postForm.message.$error.required">Please input title</small>
+            <small class="error" ng-show="postForm.message.$error.minlength">Your post is required to be at least 4 characters</small>
+            <small class="error" ng-show="postForm.message.$error.maxlength">Your post cannot be longer than 100 characters</small>
+          </div>
+        </div>
+
+        <div>
+          <input type="submit" class="btn transparent" value="Submit">
+        </div>
+
+          </div>
+        </div>
+
+        </form>
 
   </div>
+
+
+
 </div>
+

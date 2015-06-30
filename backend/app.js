@@ -23,7 +23,7 @@ var app = express(),
 var cors = require('cors');
 app.use(cors({
   credentials: true,
-  origin: 'http://10.42.0.16'
+  origin: 'http://192.168.199.185'
 }));
 
 
