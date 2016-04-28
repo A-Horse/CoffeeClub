@@ -1,0 +1,24 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+concat	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var concat = require('gulp-concat');$/;"	v	language:JavaScript
+concatCss	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var concatCss = require('gulp-concat-css');$/;"	v	language:JavaScript
+connect	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var connect = require('gulp-connect');$/;"	v	language:JavaScript
+dirs	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var dirs = pkg['h5bp-configs'].directories;$/;"	v	language:JavaScript
+fs	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var fs = require('fs');$/;"	v	language:JavaScript
+gulp	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var gulp = require('gulp');$/;"	v	language:JavaScript
+gulpif	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var gulpif = require('gulp-if');$/;"	v	language:JavaScript
+htmlreplace	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var htmlreplace = require('gulp-html-replace');$/;"	v	language:JavaScript
+imagemin	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var imagemin = require('gulp-imagemin');$/;"	v	language:JavaScript
+inject	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var inject = require('gulp-inject');$/;"	v	language:JavaScript
+livereload	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var livereload = require('gulp-livereload');$/;"	v	language:JavaScript
+manifest	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var manifest = require('gulp-manifest');$/;"	v	language:JavaScript
+minifyCss	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var minifyCss = require('gulp-minify-css');$/;"	v	language:JavaScript
+path	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var path = require('path');$/;"	v	language:JavaScript
+pkg	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var pkg = require('.\/package.json');$/;"	v	language:JavaScript
+plugins	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var plugins = require('gulp-load-plugins')();$/;"	v	language:JavaScript
+plumber	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var plumber = require('gulp-plumber');$/;"	v	language:JavaScript
+pngquant	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var pngquant = require('imagemin-pngquant');$/;"	v	language:JavaScript
+runSequence	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var runSequence = require('run-sequence');$/;"	v	language:JavaScript
+sass	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var sass = require('gulp-sass');$/;"	v	language:JavaScript
+uglify	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var uglify = require('gulp-uglify');$/;"	v	language:JavaScript
+useref	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var useref = require('gulp-useref');$/;"	v	language:JavaScript
+watch	/Users/soul/PROJECT/CoffeeClub/front/gulpfile.js	/^var watch = require('gulp-watch');$/;"	v	language:JavaScript
